@@ -15,20 +15,27 @@ body {
     overflow: hidden;
 }
 
-.signup-wrapper {
+/* Login wrapper */
+.login-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-.signup-container {
+/* Logo */
+.logo {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+/* Login container */
+.login-container {
     background-color: white;
     padding: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 350px;
-    border: 1px solid #333;  
-
+    border: 1px solid #333;
 }
 
 h2 {
@@ -44,20 +51,21 @@ label {
     text-align: left;
     font-weight: normal;
     margin-top: 10px;
-    margin-left: 1px;
 }
 
+/* Input Fields */
 input {
     width: calc(100% - 20px);
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid #333;  
+    border: 1px solid #333;
     font-family: Arial;
     background-color: white;
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2)
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
 }
 
-
+/* Login Button */
 button {
     width: 80%;
     padding: 12px;
@@ -74,6 +82,7 @@ button:hover {
     background-color: #357ABD;
 }
 
+/* Terms and Forgot Password */
 .terms {
     font-size: 12px;
     color: #666;
@@ -89,31 +98,43 @@ button:hover {
     text-decoration: underline;
 }
 
-.login-section {
-    text-align: center;
-    margin-top: 15px;
-    width: 350px;
+.forgot-password {
+    display: block;
+    font-size: 14px;
+    color: #4A90E2;
+    text-decoration: none;
+    margin-top: 10px;
 }
 
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Signup Section */
+.signup-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Signup Button */
+.signup-btn {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    color: black;
+    border: 1px solid #333;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.signup-btn:hover {
+    background: #f1f1f1;
+}
 
 .divider {
     width: 100%;
     height: 1px;
     background: #333;
     margin: 15px 0;
-}
-
-.login-btn {
-    width: 100%;
-    padding: 12px;
-    background: white;
-    color: black;
-    border: 1px solid #333;  
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.login-btn:hover {
-    background: #f1f1f1;
 }

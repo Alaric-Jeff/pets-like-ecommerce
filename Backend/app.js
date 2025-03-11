@@ -6,7 +6,6 @@ import initializeTableSetup from './middleware/initializeTablesSetup.js'
 import bodyParserMiddleware from './middleware/applyMiddlewares.js'
 
 dotenv.config()
-
 const app = express()
 
 await initializeDatabaseSetup();

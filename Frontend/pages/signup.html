@@ -3,35 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PetsLike</title>
+  <title>PetsLike - Sign Up</title>
   <link rel="stylesheet" href="../css/signup.css" />
 </head>
 <body>
-  <div class="container">
-    <form id="signupform" class="signup-box">
-    
+  <div class="signup-wrapper"> 
+    <div class="signup-container">
       <h2>Sign Up</h2>
-      
-      <label for="fullname">Full Name</label>
-      <input type="text" id="fullname" name="fullname" required />
-      
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required />
-      
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required />
-      
-      <button type="submit">Sign Up</button>
-      
-      <p class="terms">By signing up, you agree to PetsLike's Terms and Privacy Policy.</p>
-      
-      <div class="signin">
-        <p>Already have an account?</p>
-        <a href="#">Sign In</a>
-      </div>
-    </form>
+      <form id="signupform">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit">Sign Up</button>
+      </form>
+
+      <p class="terms">By signing up, you agree to PetsLike's <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+    </div>
+
+    <div class="signup-section">
+      <p>Already have an account?</p>
+      <div class="divider"></div> 
+      <button onclick="redirectToLogin()" class="login-btn">Login your account</button>
+  </div>
+  
+  
   </div>
 
-  <script src="../scripts/signupSubmission.js"></script>
+  <script>
+    function redirectToLogin() {
+        window.location.href = "../pages/login.html";  
+    }
+  </script>
 </body>
 </html>

@@ -1,10 +1,13 @@
 import express from "express";
 import cors from "cors";
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const bodyParserMiddleware = (app) => {
     const allowedOrigins = [
-        "http://127.0.0.1:5500", 
-        "http://localhost", 
+         process.env.htmlOrigin, 
+         process.env.htmlHost, 
       ];
       app.use(cors({
         origin: function (origin, callback) {
@@ -17,8 +20,7 @@ const bodyParserMiddleware = (app) => {
         methods: ["GET", "POST", "PUT", "DELETE"],
         allowedHeaders: ["Content-Type", "Authorization"],
         credentials: true,
-      }));
-      
+      }));  
 
     app.options("*", cors()); 
     app.use(express.json());

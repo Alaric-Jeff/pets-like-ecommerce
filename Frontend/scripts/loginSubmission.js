@@ -1,3 +1,8 @@
+
+function redirectToSignUp(){
+    window.location.href = "../pages/signup.html";
+}
+
 document.getElementById("loginform").addEventListener("submit", async function(event) {
     event.preventDefault(); 
 
