@@ -1,5 +1,4 @@
 import {connectDB} from '../config/database.js'
-import initializeTableSetup from './initializeTablesSetup.js'
 
 const initializeDatabaseSetup = async ()=> {
     try{

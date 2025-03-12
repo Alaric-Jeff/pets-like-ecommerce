@@ -1,4 +1,7 @@
 
+
+
+
 function redirectToSignUp(){
     window.location.href = "../pages/signup.html";
 }

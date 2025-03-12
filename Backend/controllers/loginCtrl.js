@@ -8,8 +8,6 @@ export const validateLogin = [
     check("password").notEmpty().withMessage("Password is required"),
 ];
 
-
-
     const loginController = async (req, res) => {
     const errors = validationResult(req);
     

@@ -1,4 +1,3 @@
-/* Background setup */
 body {
     width: 100vw;
     height: 100vh;
@@ -12,7 +11,15 @@ body {
     flex-direction: column;
     margin: 0;
     font-family: Arial, sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
+}
+
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
 }
 
 .signup-wrapper {
@@ -27,16 +34,10 @@ body {
     padding: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 350px;
-    border: 1px solid #333;  
-
-}
-
-h2 {
-    font-family: Arial;
-    text-align: left;
-    color: #333;
-    margin-bottom: 20px;
-    font-weight: normal;
+    border: 1px solid #333;
+    position: relative;
+    margin-bottom: 20px; 
+    margin-top: 80px;
 }
 
 label {
@@ -44,7 +45,38 @@ label {
     text-align: left;
     font-weight: normal;
     margin-top: 10px;
-    margin-left: 1px;
+}
+.email-container,
+.verification-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.email-container input,
+.verification-container input {
+    flex: 2;
+    width: auto;
+}
+
+.email-container .send-code-btn,
+.verification-container .verify-code-btn {
+    margin-bottom: 10px;
+    flex: 1;
+    width: auto;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #5a97dc;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.email-container .send-code-btn:hover,
+.verification-container .verify-code-btn:hover {
+    
+    background-color: #357ABD;
 }
 
 input {
@@ -54,9 +86,8 @@ input {
     border: 1px solid #333;  
     font-family: Arial;
     background-color: white;
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2)
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
 }
-
 
 button {
     width: 80%;
@@ -91,10 +122,9 @@ button:hover {
 
 .login-section {
     text-align: center;
-    margin-top: 15px;
     width: 350px;
+    margin-top: 10px;
 }
-
 
 .divider {
     width: 100%;
@@ -116,4 +146,51 @@ button:hover {
 
 .login-btn:hover {
     background: #f1f1f1;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); 
+    backdrop-filter: blur(100%); 
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    min-width: 300px;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid #e0e0e0; 
+    color: #333; 
+}
+
+.modal-content button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #357ABD; 
+    color: white;
+    font-size: 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.modal-content button:hover {
+    background-color: #285a8e;
 }
