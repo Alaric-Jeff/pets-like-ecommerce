@@ -4,6 +4,8 @@
     overflow: hidden;
 }
 
+
+
 nav{
     align-items: center;
     height: 40px;
@@ -15,4 +17,8 @@ nav{
 
 nav button{
     margin-left: 800px;
+}
+
+.modal{
+    display: none;
 }

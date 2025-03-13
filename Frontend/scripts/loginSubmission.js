@@ -1,8 +1,6 @@
 function redirectToSignUp() {
     window.location.href = "../pages/signup.html";
 }
-
-// Function to show modal
 function showModal(message, isSuccess = false) {
     const modal = document.getElementById("modal");
     const messageBox = modal.querySelector(".modal-message");
@@ -18,17 +16,13 @@ function showModal(message, isSuccess = false) {
     }
 }
 
-// Function to hide modal
 function hideModal() {
     document.getElementById("modal").style.display = "none";
 }
 
-// Ensure modal is hidden on page load
 document.addEventListener("DOMContentLoaded", function () {
     hideModal();
 });
-
-// Close modal when clicking the button
 document.querySelector(".modal-content button").addEventListener("click", hideModal);
 
 document.getElementById("loginform").addEventListener("submit", async function (event) {
