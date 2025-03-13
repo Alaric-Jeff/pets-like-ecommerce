@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 nav{
@@ -11,10 +12,7 @@ nav{
     display: flex;
 }
 
-nav logo{
-    margin-left: 90px;
-}
 
 nav button{
-    margin-left: 700px;
+    margin-left: 800px;
 }

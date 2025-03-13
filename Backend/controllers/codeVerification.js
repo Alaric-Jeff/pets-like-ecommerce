@@ -42,7 +42,7 @@ const sendVerificationCode = async (req, res) => {
     };
 
     console.log(`Stored verification code for ${email}: ${verificationCode}`);
-    console.log("Current verificationCodes object:", verificationCodes); // Logs all stored data
+    console.log("Current verificationCodes object:", verificationCodes); 
 
     const mailOptions = {
       from: "PetsLike@gmail.com",

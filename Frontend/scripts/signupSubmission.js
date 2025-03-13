@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
             showModal("Both email and code are required.", "warning");
             return;
         }
-
         try {
             const response = await fetch("http://localhost:3000/verify-code", {
                 method: "POST",
@@ -127,14 +126,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 credentials: "include",
                 body: JSON.stringify(formData)
             });
-
+            const data = await response.json(); 
             if (!response.ok) {
-                showModal("Sign-up failed. Please try again.", "error");
+                showModal(data.message || "Sign-up failed. Please try again.", "error"); 
             } else {
-                showModal("✅ Sign-up successful!", "success");
+                showModal(data.message || "Sign-up successful!", "success");
             }
         } catch (error) {
-            showModal("Sign-up failed. Please try again.", "error");
+            console.error("Error in response:", error);
+            showModal("Sign-up failed. Please check your connection and try again.", "error");
         }
     });
 

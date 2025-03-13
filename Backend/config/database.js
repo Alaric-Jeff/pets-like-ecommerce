@@ -15,7 +15,7 @@ const createDatabaseIfNotExists = async () => {
 		});
 
 		await connection.query(`CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\``);
-		console.log(`database "${DB_NAME}" is initialized.`);
+		console.log(`[db] database "${DB_NAME}" is initialized.`);
 		await connection.end();
 	} catch (error) {
 		console.error("error creating database:", error);

@@ -1,4 +1,4 @@
-import { UserModel } from "../models/usermodel.js";
+import UserModel from "../models/UserModel.js";
 import { verifiedEmails } from "../utils/verifiedEmails.js"; 
 import hasher from "../utils/hasher.js";
 import logger from "../utils/logger.js";
@@ -6,8 +6,8 @@ import { check, validationResult } from "express-validator";
 
 export const validateSignup = [
     check("email").isEmail().withMessage("Invalid email format"),
-    check("fullname").notEmpty().withMessage("Username is required"),
-    check("password").isLength({ min: 6 }).withMessage("Password must be at least 6 characters long"),
+    check("fullname").notEmpty().withMessage("Name is required"),
+    check("password").isLength({ min: 8 }).withMessage("Password must be at least 6 characters long"),
 ];
 
 const signupController = async (req, res) => {
@@ -19,9 +19,11 @@ const signupController = async (req, res) => {
 
         const { email, fullname, password } = req.body;
         const normalizedEmail = email.toLowerCase().trim();
+
         if (!verifiedEmails[normalizedEmail]) {
             return res.status(400).json({ message: "Email is not verified. Please verify before signing up." });
         }
+        
         const isExisting = await UserModel.findOne({ where: { email: normalizedEmail } });
         if (isExisting) {
             return res.status(409).json({ message: "Account already exists" });

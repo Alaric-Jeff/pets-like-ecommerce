@@ -1,4 +1,4 @@
-import { Sequelize, DataTypes, Model } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import {db} from "../config/database.js";
 
 class User extends Model {}
@@ -11,6 +11,11 @@ export const UserModel = User.init(
             autoIncrement: true,
             allowNull: false,
             unique: true
+        },
+        role: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "user"
         },
         email: {
             type: DataTypes.STRING,
@@ -29,7 +34,7 @@ export const UserModel = User.init(
     },
     {
         sequelize: db, 
-        tableName: "usertable",
+        tableName: "user_table",
         timestamps: false 
     }
 );

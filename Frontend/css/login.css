@@ -127,3 +127,67 @@ button:hover {
     background: #333;
     margin: 15px 0;
 }
+
+.modal {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+
+.modal {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); 
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    min-width: 300px;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid #e0e0e0; 
+    color: #333; 
+}
+.modal-content button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #357ABD; 
+    color: white;
+    font-size: 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.modal-content button:hover {
+    background-color: #285a8e;
+}
+
+
+

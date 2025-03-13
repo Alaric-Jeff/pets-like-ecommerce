@@ -23,13 +23,13 @@ export const validateLogin = [
         const account = await UserModel.findOne({ where: { email } });
 
         if (!account) {
-            return res.status(404).json({ message: "account doesn't exist" });
+            return res.status(404).json({ message: "Account doesn't exist" });
         }
 
         const isPasswordMatch = await bcrypt.compare(password, account.password);
 
         if (!isPasswordMatch) {
-            return res.status(401).json({ message: "incorrect password" });
+            return res.status(401).json({ message: "Incorrect password" });
         }
 
         logger.info(`user ${email} logged in successfully`);
