@@ -3,32 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>petslike</title>
+    <title>PetsLike</title>
     <link rel="stylesheet" href="./css/index.css">
-</head>
+</head> 
 <body>
-        <nav>
-            <p>logo</p>
-            <button onclick="redirectToLogin()" >Login</button>
-        </nav>
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="./assets/images/petslike-logo.png" alt="PetsLike Logo">
+        </a>
+        <button onclick="redirectToLogin()" class="login-btn">Login</button>
+    </nav>
 
-        <div class="landing-page-container">
-            <div class="landing-page-content">
-                
-            </div>
-        </div>
-        
-        <footer>
+    <div class="banner">
+        <img src="./assets/images/1080 x 800.png">
+    </div>
 
-        </footer>
+    <div class="static-products">   
+    <div class="product-card">
+        <img src="./assets/images/dog-treats.jpg" alt="Dietary Treats">
+        <h3>Dietary-Specific Treats</h3>
+        <a href="#">Learn More</a>
+    </div>
 
-        <div class="modal">
-            <div class="modal-content">
-                <p class="modal-"></p>message
-                <button id="modal-close">OK</button>
-            </div>
-        </div>
+    <div class="product-card">
+        <img src="./assets/images/dog-treats2.avif" alt="Breed-Specific Treats">
+        <h3>Breed-Specific Treats</h3>
+        <a href="#">Learn More</a>
+    </div>
 
-        <script src="./scripts/index.js" ></script>
+    <div class="product-card">
+        <img src="./assets/images/dog-treats3.jpg" alt="Life Stage Treats">
+        <h3>Life Stage Treats</h3>
+        <a href="#">Learn More</a>
+    </div>
+
+    <div class="product-card">
+        <img src="./assets/images/dog-treats4.jpg" alt="Health Treats">
+        <h3>Health-Boosting Treats</h3>
+        <a href="#">Learn More</a>
+    </div>
+</div>
+
+    <script src="./scripts/index.js" ></script>
 </body>
 </html>

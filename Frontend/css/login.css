@@ -1,7 +1,7 @@
 
 body {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-image: url("../assets/images/petslikebg.jpg");
     background-size: cover;
     background-position: center;
@@ -12,7 +12,7 @@ body {
     flex-direction: column;
     margin: 0;
     font-family: Arial, sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .login-wrapper {
@@ -20,6 +20,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-top: 50px;
 }
 
 
@@ -38,7 +39,6 @@ body {
 
 h2 {
     font-family: Arial;
-    text-align: left;
     color: #333;
     margin-bottom: 20px;
     font-weight: normal;
@@ -187,6 +187,28 @@ button:hover {
 
 .modal-content button:hover {
     background-color: #285a8e;
+}
+
+footer {
+    width: 100%;
+    background-color: #F5F5F5; 
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    color: #333;
+    position: relative;
+    bottom: 0;
+}
+
+footer a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
 
 

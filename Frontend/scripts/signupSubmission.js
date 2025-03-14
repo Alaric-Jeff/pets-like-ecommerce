@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
             showModal("Please verify your code before signing up.", "warning");
             return;
         }
-
         const formData = {
             fullname: fullname.value.trim(),
             email: email.value.trim(),
@@ -131,6 +130,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 showModal(data.message || "Sign-up failed. Please try again.", "error"); 
             } else {
                 showModal(data.message || "Sign-up successful!", "success");
+            
+                setTimeout(() => {
+                    window.location.href = "../pages/login.html";
+                }, 2000);
             }
         } catch (error) {
             console.error("Error in response:", error);
