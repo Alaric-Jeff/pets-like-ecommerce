@@ -3,7 +3,7 @@ import {db} from "../config/database.js";
 
 class User extends Model {}
 
-export const UserModel = User.init(
+const UserModel = User.init(
     {
         userid: {
             type: DataTypes.INTEGER,

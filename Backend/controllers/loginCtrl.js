@@ -1,4 +1,4 @@
-import UserModel from "../models/usermodel.js";
+import UserModel from "../models/UserModel.js";
 import bcrypt from "bcrypt";
 import { check, validationResult } from "express-validator";
 import logger from "../utils/logger.js"; 

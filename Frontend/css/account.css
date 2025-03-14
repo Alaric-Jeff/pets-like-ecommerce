@@ -2,10 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    background-color: #F5F5F5;
 }
 
 nav {
@@ -49,6 +50,10 @@ nav {
     width: 100%;
     max-width: 400px;
     height: 100%;
+    border-top-left-radius: 0px; 
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .search-bar .search-btn {
@@ -60,7 +65,10 @@ nav {
     cursor: pointer;
     transition: background-color 0.3s ease;
     height: 100%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
+
 
 .search-bar .search-btn:hover {
     background-color: #E0A800;
@@ -82,95 +90,91 @@ nav {
     text-decoration: underline;
 }
 
-.banner img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.static-products {
+.account-container {
     display: flex;
-    justify-content: center;
-    gap: 90px;
-    padding: 40px;
-    background: linear-gradient(to bottom, #3a73e5, white);
-}
-
-.product-card {
+    margin: 50px auto;
+    width: 80%;
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 220px;
     padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.product-card img {
-    width: 100px;
-    height: 170px;
+.sidebar {
+    width: 25%;
+    text-align: center;
+    padding: 20px;
+    background-color: #EAEAEA;
+    border-right: 2px solid #ccc;
 }
 
-.product-card h3 {
-    margin: 10px 0;
-    font-size: 16px;
+.sidebar i {
+    font-size: 80px;
+    color: #333;
 }
 
-.product-card a {
-    color: rgb(30, 147, 220);
+.username {
+    font-size: 18px;
     font-weight: bold;
+    margin: 10px 0;
+}
+
+.edit-profile {
+    color: #007BFF;
     text-decoration: none;
 }
 
-.product-card a:hover {
-    text-decoration: underline;
-}
-
-.product-carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
+.profile-section {
+    width: 75%;
     padding: 20px;
-    position: relative;
 }
 
-.carousel-track {
+.profile-section h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.profile-section p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+form {
     display: flex;
-    gap: 100px;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    width: 80%;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
     padding: 10px;
-}
-
-.carousel-item {
-    flex: 0 0 auto;
-    width: 150px;
-    height: auto;
-}
-
-.carousel-item img {
+    border: 1px solid #ccc;
+    border-radius: 5px;
     width: 100%;
-    height: auto;
-    border-radius: 10px;
 }
 
-.carousel-btn {
+.save-btn {
+    padding: 10px;
     background: #FFC107;
     border: none;
-    color: white;
-    font-size: 20px;
     cursor: pointer;
-    padding: 10px 15px;
-    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 120px;
+    align-self: flex-start;
 }
 
-.prev {
-    left: 5px;
-}
-
-.next {
-    right: 5px;
+.save-btn:hover {
+    background: #E0A800;
 }
 
 footer {
@@ -178,6 +182,7 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
+    margin-top: 50px;
 }
 
 .footer-links {
@@ -194,4 +199,3 @@ footer {
 .footer-links a:hover {
     text-decoration: underline;
 }
-    

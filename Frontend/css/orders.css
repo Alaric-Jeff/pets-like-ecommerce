@@ -1,13 +1,35 @@
+/* Reset & General Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
     font-family: Arial, sans-serif;
 }
 
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F5F5;
+}
+
+/* Main wrapper to push footer down */
+.orders-container {
+    flex: 1;
+    width: 80%;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.orders-container h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Navbar */
 nav {
     display: flex;
     justify-content: space-between;
@@ -33,6 +55,7 @@ nav {
     object-fit: contain;
 }
 
+/* Search Bar */
 .search-bar {
     position: absolute;
     left: 50%;
@@ -49,6 +72,10 @@ nav {
     width: 100%;
     max-width: 400px;
     height: 100%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .search-bar .search-btn {
@@ -60,12 +87,15 @@ nav {
     cursor: pointer;
     transition: background-color 0.3s ease;
     height: 100%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .search-bar .search-btn:hover {
     background-color: #E0A800;
 }
 
+/* Navigation Links */
 .nav-links {
     display: flex;
     gap: 40px;
@@ -82,102 +112,83 @@ nav {
     text-decoration: underline;
 }
 
-.banner img {
+/* Orders Table */
+.orders-table {
     width: 100%;
-    height: auto;
-    display: block;
+    border-collapse: collapse;
 }
 
-.static-products {
-    display: flex;
-    justify-content: center;
-    gap: 90px;
-    padding: 40px;
-    background: linear-gradient(to bottom, #3a73e5, white);
+.orders-table th, .orders-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
 }
 
-.product-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 220px;
-    padding: 20px;
+.orders-table th {
+    background: #A0D2EB;
+    color: #333;
 }
 
-.product-card img {
-    width: 100px;
-    height: 170px;
+.orders-table tr:hover {
+    background: #f9f9f9;
 }
 
-.product-card h3 {
-    margin: 10px 0;
-    font-size: 16px;
-}
-
-.product-card a {
-    color: rgb(30, 147, 220);
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.product-card a:hover {
-    text-decoration: underline;
-}
-
-.product-carousel {
+.product-info {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: white;
-    padding: 20px;
-    position: relative;
+    gap: 10px;
 }
 
-.carousel-track {
-    display: flex;
-    gap: 100px;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    width: 80%;
-    padding: 10px;
+.product-info img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
-.carousel-item {
-    flex: 0 0 auto;
-    width: 150px;
-    height: auto;
+/* Order Status */
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
 }
 
-.carousel-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.carousel-btn {
-    background: #FFC107;
-    border: none;
+.status.completed {
+    background: #4CAF50;
     color: white;
+}
+
+.status.pending {
+    background: #FFC107;
+    color: white;
+}
+
+/* Empty Orders Message */
+.empty-cart {
+    text-align: center;
+    padding: 50px;
+    color: #777;
+}
+
+.empty-cart i {
+    font-size: 50px;
+    color: #A0D2EB;
+    margin-bottom: 10px;
+}
+
+.empty-cart p {
     font-size: 20px;
-    cursor: pointer;
-    padding: 10px 15px;
-    position: absolute;
+    font-weight: bold;
 }
 
-.prev {
-    left: 5px;
-}
-
-.next {
-    right: 5px;
-}
-
+/* Footer */
 footer {
     background: #3a73e5;
     color: white;
     text-align: center;
     padding: 10px;
+    margin-top: auto;
+    width: 100%;
 }
 
 .footer-links {
@@ -194,4 +205,3 @@ footer {
 .footer-links a:hover {
     text-decoration: underline;
 }
-    
