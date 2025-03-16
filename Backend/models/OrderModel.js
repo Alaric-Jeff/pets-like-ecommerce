@@ -1,4 +1,4 @@
-import {Sequelize, DataTypes, Model } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import { db } from "../config/database.js";
 
 class Order extends Model {}
@@ -20,18 +20,6 @@ const OrderModel = Order.init({
     },
     productPrice:{
         type: DataTypes.DOUBLE,
-    },
-    totalOrderPrice:{
-        type: DataTypes.DOUBLE
-    },
-    productDietaryCategory: {
-        type: DataTypes.STRING
-    },
-    productBreedCategory:{
-        type: DataTypes.STRING
-    },
-    productLifeStage:{
-        type: DataTypes.STRING
     }
 },{
     sequelize: db,

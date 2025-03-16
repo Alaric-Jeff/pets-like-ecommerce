@@ -12,6 +12,16 @@ const UserModel = User.init(
             allowNull: false,
             unique: true
         },
+        firstname:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: false
+        },
+        surname:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: false
+        },
         role: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -21,11 +31,6 @@ const UserModel = User.init(
             type: DataTypes.STRING,
             allowNull: false,
             unique: true
-        },
-        fullname:{
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: false
         },
         password: {
             type: DataTypes.STRING,

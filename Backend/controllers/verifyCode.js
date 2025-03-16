@@ -1,5 +1,5 @@
 import { verificationCodes } from "../utils/verificationCodes.js";
-import { verifiedEmails } from "../utils/verifiedEmails.js"; // New: Store verified emails
+import { verifiedEmails } from "../utils/verifiedEmails.js"; 
 import logger from "../utils/logger.js";
 
 const verifyCode = (req, res) => {
@@ -34,7 +34,6 @@ const verifyCode = (req, res) => {
     return res.status(400).json({ message: "Invalid verification code" });
   }
 
-  // ✅ Mark email as verified
   verifiedEmails[email] = true;
 
   delete verificationCodes[email]; 

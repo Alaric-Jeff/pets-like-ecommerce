@@ -1,9 +1,9 @@
-import { Sequelize, DataTypes, Model } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import { db } from "../config/database.js";
 
-class products extends Model {}
+class Product extends Model {}
 
-const productModel = products.init({
+const ProductModel = Product.init({
     productId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -18,11 +18,11 @@ const productModel = products.init({
         type: DataTypes.STRING,
         allowNull: false
     },
-    productRecommendedAgeType:{
+    productAgeTypeCategory:{
         type: DataTypes.STRING,
         allowNull: false
     },
-    productForBreed:{
+    productBreedCategory:{
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -37,8 +37,8 @@ const productModel = products.init({
 
 }, {
     sequelize: db,
-    tablename: "products_table",
+    tableName: "product_table",
     timestamps: false
 })
 
-export default productModel;
+export default ProductModel;
