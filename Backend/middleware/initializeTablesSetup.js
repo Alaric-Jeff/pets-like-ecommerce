@@ -1,5 +1,5 @@
 import UserModel from "../models/UserModel.js"
-import productModel from "../models/productsModels.js"
+import productModel from "../models/ProductModel.js"
 import OrderModel from "../models/OrderModel.js"
 
 const initializeTableSetup = async ()=> {
