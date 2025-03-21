@@ -5,9 +5,12 @@ import logger from "../utils/logger.js";
 import { check, validationResult } from "express-validator";
 
 export const validateSignup = [
+    check("firstname").notEmpty().withMessage("Firstname is required"),
+    check("firstname").isLength({ min: 3, max: 30 }).withMessage("Firstname must be between 3 and 30 characters"),
+    check("surname").notEmpty().withMessage("Surname is required"),
+    check("surname").isLength({ min: 3, max: 30 }).withMessage("Surname must be between 3 and 30 characters"),
     check("email").isEmail().withMessage("Invalid email format"),
-    check("fullname").notEmpty().withMessage("Name is required"),
-    check("password").isLength({ min: 8 }).withMessage("Password must be at least 6 characters long"),
+    check("password").isLength({ min: 8 }).withMessage("Password must be at least 8 characters long"),
 ];
 
 const signupController = async (req, res) => {
@@ -17,7 +20,7 @@ const signupController = async (req, res) => {
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const { email, fullname, password } = req.body;
+        const { firstname, surname, email, password } = req.body;
         const normalizedEmail = email.toLowerCase().trim();
 
         if (!verifiedEmails[normalizedEmail]) {
@@ -28,12 +31,18 @@ const signupController = async (req, res) => {
         if (isExisting) {
             return res.status(409).json({ message: "Account already exists" });
         }
+
         const hashedPassword = await hasher(password);
-        const newUser = await UserModel.create({ email: normalizedEmail, fullname, password: hashedPassword });
+        const newUser = await UserModel.create({ 
+            firstname, 
+            surname, 
+            email: normalizedEmail, 
+            password: hashedPassword 
+        });
 
         const { password: _, ...userData } = newUser.toJSON();
 
-        logger.info(`New user created: ${fullname} (${normalizedEmail})`);
+        logger.info(`New user created: ${firstname} ${surname} (${normalizedEmail})`);
         delete verifiedEmails[normalizedEmail];
 
         return res.status(201).json({ message: "Account successfully created", user: userData });

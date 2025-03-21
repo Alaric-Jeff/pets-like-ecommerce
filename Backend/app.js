@@ -1,8 +1,8 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import initializeDatabaseSetup from './middleware/initializeDatabaseSetup.js'
-import initializeRoutes from './middleware/initializeRoutes.js'
-import initializeTableSetup from './middleware/initializeTablesSetup.js'
+import initializeDatabaseSetup from './config/initializeDatabaseSetup.js'
+import initializeRoutes from './config/initializeRoutes.js'
+import initializeTableSetup from './config/initializeTablesSetup.js'
 import bodyParserMiddleware from './middleware/applyMiddlewares.js'
 
 dotenv.config()

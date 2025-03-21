@@ -2,6 +2,11 @@ import UserModel from "../models/UserModel.js";
 import bcrypt from "bcrypt";
 import { check, validationResult } from "express-validator";
 import logger from "../utils/logger.js"; 
+import dotenv from 'dotenv'
+import jwt from 'jsonwebtoken'
+
+
+dotenv.config()
 
 export const validateLogin = [
     check("email").isEmail().withMessage("Invalid email format"),
@@ -32,8 +37,14 @@ export const validateLogin = [
             return res.status(401).json({ message: "Incorrect password" });
         }
 
+        const token = jwt.sign(
+            {userid: account.userid},
+            process.env.JWT_SECRET,
+            {expiresIn: '24h'}
+        )
+
         logger.info(`user ${email} logged in successfully`);
-        return res.status(200).json({ message: "Login successful" });
+        return res.status(200).json({ message: "Login successful", token, role: account.role});
 
     } catch (error) {
         logger.error("Login error:", error);

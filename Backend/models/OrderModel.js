@@ -1,5 +1,6 @@
-import {Sequelize, DataTypes, Model } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import { db } from "../config/database.js";
+import UserModel from "./UserModel.js";
 
 class Order extends Model {}
 
@@ -9,6 +10,14 @@ const OrderModel = Order.init({
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
+    },
+    userid:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: UserModel,
+            key: "userid"
+        }
     },
     productName:{
         type: DataTypes.STRING,
@@ -20,18 +29,6 @@ const OrderModel = Order.init({
     },
     productPrice:{
         type: DataTypes.DOUBLE,
-    },
-    totalOrderPrice:{
-        type: DataTypes.DOUBLE
-    },
-    productDietaryCategory: {
-        type: DataTypes.STRING
-    },
-    productBreedCategory:{
-        type: DataTypes.STRING
-    },
-    productLifeStage:{
-        type: DataTypes.STRING
     }
 },{
     sequelize: db,
