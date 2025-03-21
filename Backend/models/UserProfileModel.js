@@ -34,6 +34,8 @@ const UserProfileModel = UserProfile.init({
     },
     chosenLifeStage: {
         type: DataTypes.STRING
+    },isHealthyTreat: {
+        type: DataTypes.BOOLEAN
     }
 
 

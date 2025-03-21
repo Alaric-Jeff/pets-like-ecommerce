@@ -11,7 +11,7 @@ function showModal(message, isSuccess = false) {
     if (isSuccess) {
         setTimeout(() => {
             modal.style.display = "none";
-            window.location.href = "../pages/home.html"; // Redirect after success
+            window.location.href = "../pages/home.html";
         }, 2000);
     }
 }
@@ -51,6 +51,7 @@ document.getElementById("loginform").addEventListener("submit", async function (
         }
 
         const data = await response.json();
+        localStorage.setItem("token", data.token)
         console.log("Server Response:", data);
 
         showModal("Login successful!", true);
