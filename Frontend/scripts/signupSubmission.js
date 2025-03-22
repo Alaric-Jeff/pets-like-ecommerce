@@ -9,13 +9,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    const fullname = document.getElementById("fullname");
+    const firstname = document.getElementById("firstname");
+    const surname = document.getElementById("surname");
     const email = document.getElementById("email");
     const code = document.getElementById("code");
     const password = document.getElementById("password");
 
-    fullname.addEventListener("input", function () {
-        validateInput(fullname, fullname.value.length < 5);
+    firstname.addEventListener("input", function () {
+        validateInput(firstname, firstname.value.length < 3 || firstname.value.length > 30);
+    });
+
+    surname.addEventListener("input", function () {
+        validateInput(surname, surname.value.length < 3);
     });
 
     email.addEventListener("input", function () {
@@ -83,8 +88,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let isValid = true;
 
-        if (fullname.value.length < 5) {
-            validateInput(fullname, true);
+        if (firstname.value.length < 3 || firstname.value.length > 30) {
+            validateInput(firstname, true);
+            isValid = false;
+        }
+
+        if (surname.value.length < 3) {
+            validateInput(surname, true);
             isValid = false;
         }
 
@@ -112,8 +122,10 @@ document.addEventListener("DOMContentLoaded", function () {
             showModal("Please verify your code before signing up.", "warning");
             return;
         }
+
         const formData = {
-            fullname: fullname.value.trim(),
+            firstname: firstname.value.trim(),
+            surname: surname.value.trim(),
             email: email.value.trim(),
             password: password.value
         };

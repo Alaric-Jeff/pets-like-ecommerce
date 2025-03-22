@@ -10,22 +10,6 @@ const ProductModel = Product.init({
         allowNull: false,
         autoIncrement: true
     },
-    productName: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    productFoodType: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    productAgeTypeCategory:{
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    productBreedCategory:{
-        type: DataTypes.STRING,
-        allowNull: false
-    },
     productPrice: {
         type: DataTypes.DOUBLE,
         allowNull: false
@@ -33,6 +17,25 @@ const ProductModel = Product.init({
     productStock: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+    productName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    productMeatType: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    productAgeType:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    productBreedType:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    productisHealthTreat:{
+        type: DataTypes.BOOLEAN
     }
 
 }, {

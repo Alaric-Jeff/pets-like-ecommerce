@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import { check, validationResult } from "express-validator";
 import logger from "../utils/logger.js"; 
 import dotenv from 'dotenv'
+import jwt from 'jsonwebtoken'
+
 
 dotenv.config()
 

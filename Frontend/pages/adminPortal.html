@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Products</title>
+    <link rel="stylesheet" href="../css/adminPortal.css">
+</head>
+<body>
+    <nav>
+        <a>Petslike</a>
+        <div>
+            <span>Products</span>
+            <span>Orders</span>
+            <span>Analytics</span>
+            <span id="logout">Logout</span>
+        </div>
+    </nav>
+
+    <div class="content-container">
+        <h2>Manage Products</h2>
+
+        <!-- Product Form -->
+        <form id="productForm">
+            <input type="text" id="productName" placeholder="Product Name" required>
+            <input type="number" id="productPrice" placeholder="Price" required>
+            <input type="number" id="productStock" placeholder="Stock Quantity" min="1" required>
+
+            <select id="ageCategory" required>
+                <option value="">Select Age Category</option>
+                <option value="Puppy">Puppy</option>
+                <option value="Adult">Adult</option>
+                <option value="Senior">Senior</option>
+            </select>
+
+            <select id="breedCategory" required>
+                <option value="">Select Breed Size</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+            </select>
+
+            <select id="meatType" required>
+                <option value="">Select Meat Type</option>
+                <option value="Chicken">Chicken</option>
+                <option value="Beef">Beef</option>
+                <option value="Fish">Fish</option>
+            </select>
+
+           
+
+            <label>
+                <input type="checkbox" id="isHealthTreat"> Health Treat?
+            </label>
+
+            <input type="file" id="productImage" accept="image/*" required>
+            <button type="submit">Add Product</button>
+        </form>
+
+        <!-- Product List -->
+        <ul class="product-list" id="productList"></ul>
+    </div>
+
+    <footer>
+        &copy; 2025 Petslike. All Rights Reserved.
+    </footer>
+
+    <script src="../js/adminPortal.js"></script>
+</body>
+</html>
