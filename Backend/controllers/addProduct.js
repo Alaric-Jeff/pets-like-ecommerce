@@ -32,7 +32,7 @@ const addProductController = async (req, res) => {
                 productStock: product.productStock + Number(productStock)
             });
 
-            return res.status(200).json({ message: `Updated stock and price for ${productName}` });
+            return res.status(200).json({ message: `Updated stock for ${productName}` });
         }
 
         await ProductModel.create({

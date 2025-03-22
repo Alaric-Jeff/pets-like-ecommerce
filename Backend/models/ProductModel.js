@@ -20,7 +20,8 @@ const ProductModel = Product.init({
     },
     productName: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     productMeatType: {
         type: DataTypes.STRING,
