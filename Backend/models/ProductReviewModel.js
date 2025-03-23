@@ -5,7 +5,7 @@ import ProductModel from "./ProductModel.js";
 class ProductReview extends Model {}
 
 const ProductReviewModel = ProductReview.init({
-    id: {
+    ratingId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true

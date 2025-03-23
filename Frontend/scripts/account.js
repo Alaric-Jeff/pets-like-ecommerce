@@ -1,16 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const logoutButton = document.getElementById("logoutbtn"); 
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        console.warn("No token found. Redirecting to login page...");
+        window.location.replace("../pages/login.html");
+        return;
+    }
+
+    const logoutButton = document.getElementById("logoutbtn");
 
     if (logoutButton) {
-        console.log("Logout button found.");
         logoutButton.addEventListener("click", function (event) {
-            event.preventDefault(); 
-            console.log("Logout button clicked!");
+            event.preventDefault();
+            console.log("Logging out...");
 
-            localStorage.clear();
-            console.log("Redirecting to home page...");
-            
-            window.location.replace("../index.html"); 
+            localStorage.removeItem("token");
+            window.location.replace("../index.html");
         });
     } else {
         console.error("Logout button not found.");
