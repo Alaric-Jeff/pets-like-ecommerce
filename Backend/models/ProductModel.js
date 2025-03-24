@@ -10,6 +10,11 @@ const ProductModel = Product.init({
         allowNull: false,
         autoIncrement: true
     },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: "Description Unavailable"
+    },
     productPrice: {
         type: DataTypes.DOUBLE,
         allowNull: false
@@ -46,3 +51,5 @@ const ProductModel = Product.init({
 })
 
 export default ProductModel;
+
+

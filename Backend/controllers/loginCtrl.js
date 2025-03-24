@@ -38,7 +38,7 @@ export const validateLogin = [
         }
 
         const token = jwt.sign(
-            {userid: account.userid},
+            {userid: account.userid, role: account.role},
             process.env.JWT_SECRET,
             {expiresIn: '24h'}
         )

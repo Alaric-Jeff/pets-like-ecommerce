@@ -4,36 +4,47 @@ import UserModel from "./UserModel.js";
 
 class Order extends Model {}
 
-const OrderModel = Order.init({
+const OrderModel = Order.init(
+  {
     orderId: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
     },
-    userid:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: UserModel,
-            key: "userid"
-        }
+    userid: {  
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: UserModel,
+        key: "userId"
+      },
+      onUpdate: "CASCADE",
+      onDelete: "CASCADE" 
     },
-    productName:{
-        type: DataTypes.STRING,
-        allowNull: false,
+    productName: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    orderQuantity:{
-       type: DataTypes.INTEGER,
-       allowNull: false
+    orderQuantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
-    productPrice:{
-        type: DataTypes.DOUBLE,
+    productPrice: {
+      type: DataTypes.DOUBLE,
+      allowNull: false
+    },
+    totalSum: {
+      type: DataTypes.DOUBLE,
+      allowNull: false
     }
-},{
+  },
+  {
     sequelize: db,
-    tableName: "order_table",
+    modelName: "Order",
+    tableName: "orders",
     timestamps: false
-});
+  }
+);
 
 export default OrderModel;

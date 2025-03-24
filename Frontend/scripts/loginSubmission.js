@@ -8,12 +8,31 @@ function showModal(message, isSuccess = false) {
     messageBox.textContent = message;
     modal.style.display = "flex";
 
+  
+
+    
+
     if (isSuccess) {
-        setTimeout(() => {
-            modal.style.display = "none";
-            window.location.href = "../pages/home.html";
-        }, 2000);
+        const token = localStorage.getItem("token"); 
+    
+        if (token) {
+            const base64Url = token.split('.')[1]; 
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const payload = JSON.parse(atob(base64));
+
+            console.log(`payload role: ${payload.role}`)
+            setTimeout(() => {
+                modal.style.display = "none";
+                if (payload.role === "admin") { 
+                    console.log('redirecting to admin portal')
+                    window.location.href = "../pages/adminPortal.html";
+                } else {
+                    window.location.href = "../pages/home.html";
+                }
+            }, 2000);
+        }
     }
+    
 }
 
 function hideModal() {
