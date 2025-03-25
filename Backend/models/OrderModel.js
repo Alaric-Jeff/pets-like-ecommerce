@@ -15,9 +15,9 @@ const OrderModel = Order.init(
     userid: {  
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
+      references: { 
         model: UserModel,
-        key: "userId"
+        key: "userid"
       },
       onUpdate: "CASCADE",
       onDelete: "CASCADE" 
@@ -37,13 +37,17 @@ const OrderModel = Order.init(
     totalSum: {
       type: DataTypes.DOUBLE,
       allowNull: false
+    },
+    orderStatus: {
+      type: DataTypes.STRING,
+      defaultValue: "Pending"
     }
   },
   {
     sequelize: db,
     modelName: "Order",
     tableName: "orders",
-    timestamps: false
+    timestamps: true
   }
 );
 

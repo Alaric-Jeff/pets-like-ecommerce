@@ -4,7 +4,7 @@ import logger from "../utils/logger.js";
 const deleteProductController = async (req, res) => {
     console.log("Backend: Received request body ->", req.body); // Debug Log
 
-    const { productId } = req.body; // Fix casing: `productId` not `productid`
+    const { productId } = req.body;
 
     if (!productId) {
         logger.warn("Delete request failed: Missing productId");

@@ -4,6 +4,6 @@ import express from 'express'
 
 const router = express.Router()
 
-router.post('/', productController);
+router.post('/', authenticateToken ,productController);
 
 export default router;

@@ -12,6 +12,7 @@ import updateProductRoute from '../routers/updateProductRoute.js'
 import deleteProductRoute from '../routers/deleteProductRoute.js'
 import getAllProductsRoute from '../routers/getAllProducts.js'
 import uploadRoute from '../routers/productImageRoute.js'
+import adminFetchProduct from '../controllers/adminFetchOrders.js'
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -36,6 +37,7 @@ const initializeRoutes = (app)=> {
     app.use('/update-product', updateProductRoute)
     app.use('/delete-product', deleteProductRoute)
     app.use('/get-products', getAllProductsRoute)
+    app.use('/get-orders', adminFetchProduct)
 }
 
 export default initializeRoutes;

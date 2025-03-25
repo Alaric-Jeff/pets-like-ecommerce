@@ -1,24 +1,29 @@
-import OrderModel from '../models/UserModel.js'
+import OrderModel from '../models/OrderModel.js'; 
 
-const sendOrderController = async (req, res) =>{
-    const {userid, orderId, productName, orderQuantity, productPrice} = req.body;
+const sendOrderController = async (req, res) => {
+    const { userid, productName, orderQuantity, productPrice } = req.body;
 
-    if(!userid || !orderId || !productName || !orderQuantity || !productPrice){
-        console.log(`recieved fields in send order, order id: ${orderId}, user id: ${userid}`)
-        return res.status(401).json({message: "incomplete request"})
+    console.log(`received field: userid: ${userid}, productName: ${productName}, orderQuantity: ${orderQuantity}, productPrice: ${productPrice}`);
+
+    if (!userid || !productName || !orderQuantity || !productPrice) {
+        console.log(`Received incomplete request. User ID: ${userid}`);
+        return res.status(400).json({ message: "Incomplete request" });
     }
 
-    try{
-        await OrderModel.create({userid, productName, orderQuantity, productPrice, 
-            totalSum: Number(productName.price) * Number(orderQuantity)
-        })
+    try {
+        await OrderModel.create({
+            userid,
+            productName,
+            orderQuantity,
+            productPrice,
+            totalSum: Number(productPrice) * Number(orderQuantity) 
+        });
 
-        return res.status(200).json({message: "successfully sent the order"})
-    }catch(error){
-        console.error(`error occured in send order controller`)
-        return res.status(500).json({message: "internal server error"})
+        return res.status(200).json({ message: "Successfully sent the order" });
+    } catch (error) {
+        console.error(`Error in sendOrderController: ${error}`);
+        return res.status(500).json({ message: "Internal server error" });
     }
-
-}
+};
 
 export default sendOrderController;
