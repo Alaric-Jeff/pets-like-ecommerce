@@ -1,7 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import { db } from "../config/database.js";
 import UserModel from "./UserModel.js";
-import OrderModel from "./OrderModel.js";
+import ProductModel from "./ProductModel.js";
 
 class Cart extends Model {}
 
@@ -20,13 +20,16 @@ const CartModel = Cart.init({
             key: "userid"
         }
     },
-    orderId: {
+    productId:{
         type: DataTypes.INTEGER,
         references: {
-            model: OrderModel,
-            key: "orderId"
+            model: ProductModel,
+            key: "productId"
         }
-    },
+    },quantity:{
+        type: DataTypes.INTEGER
+    }
+    
 },{
     sequelize: db,
     modelName: "cart_model",

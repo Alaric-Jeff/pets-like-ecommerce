@@ -13,7 +13,7 @@ import deleteProductRoute from '../routers/deleteProductRoute.js'
 import getAllProductsRoute from '../routers/getAllProducts.js'
 import uploadRoute from '../routers/productImageRoute.js'
 import adminFetchProduct from '../controllers/adminFetchOrders.js'
-
+import addToCartRoute from '../routers/addToCartRoute.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,6 +28,7 @@ const initializeRoutes = (app)=> {
     //users' type shit
     app.use('/get-profile', getProfileRoute)
     app.use('/send-order-route', sendOrderRoute)
+    app.use('/add-to-cart', addToCartRoute)
 
     app.use('/uploads', express.static(path.join(__dirname, '../utils/uploads')));
     app.use('/upload-product-image', uploadRoute)

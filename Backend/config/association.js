@@ -4,7 +4,7 @@ import OrderModel from "../models/OrderModel.js";
 import ProductModel from "../models/ProductModel.js";
 import ProductReviewModel from "../models/ProductReviewModel.js";
 import CartModel from "../models/CartModel.js";
-import OrderItemModel from "../models/OrderItemModel.js"; // Pivot table for Many-to-Many
+import OrderItemModel from "../models/OrderItemModel.js"; 
 
 const AssociationConfig = () => {
     UserModel.hasOne(UserProfileModel, { foreignKey: "userid", onDelete: "CASCADE" });
@@ -12,9 +12,6 @@ const AssociationConfig = () => {
 
     UserModel.hasMany(CartModel, { foreignKey: "userid", onDelete: "CASCADE" });
     CartModel.belongsTo(UserModel, { foreignKey: "userid" });
-
-    CartModel.hasOne(OrderModel, { foreignKey: "cartId", onDelete: "CASCADE" });
-    OrderModel.belongsTo(CartModel, { foreignKey: "cartId" });
 
     ProductModel.hasMany(ProductReviewModel, { foreignKey: "productId", onDelete: "CASCADE" });
     ProductReviewModel.belongsTo(ProductModel, { foreignKey: "productId" });
