@@ -12,7 +12,7 @@ const productStorage = multer.diskStorage({
 
 const profileStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join('utils/uploads/profile_pictures'));
+    cb(null, path.join('utils/uploads/profilePictures'));
   },
   filename: function (req, file, cb) {
     cb(null, `${Date.now()}-${file.originalname}`);

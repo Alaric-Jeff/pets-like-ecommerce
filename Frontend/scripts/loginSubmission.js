@@ -9,9 +9,6 @@ function showModal(message, isSuccess = false) {
     modal.style.display = "flex";
 
   
-
-    
-
     if (isSuccess) {
         const token = localStorage.getItem("token"); 
     

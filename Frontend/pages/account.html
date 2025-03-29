@@ -1,78 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account</title>
-    <link rel="stylesheet" href="../css/account.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account</title>
+  <link rel="stylesheet" href="../css/account.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <nav>
-        <a href="./home.html" class="logo">
-          <img src="../assets/images/petslike-logo.png" alt="PetsLike Logo">
-        </a>
-        <div class="search-bar">
-          <input type="text" placeholder="Search">
-          <button type="submit" class="search-btn">
-              <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-      </div>
-        <div class="nav-links">
-          <a href="./account.html" class="nav-link">Account</a>
-          <a href="./cart.html" class="nav-link">Cart</a>
-          <a href="./orders.html" class="nav-link">Orders</a>
-        </div>
-      </nav>
-
-    <div class="account-container">
-        <aside class="sidebar">
-            <i class="fa-solid fa-user"></i>
-            <p class="username">Jeffrey Aspiras</p>
-            <a href="#" class="edit-profile">Edit Profile</a>
-        </aside>
-        <section class="profile-section">
-            <h2>My Profile</h2>
-            <p>Manage your account</p>
-            <form>
-                <div class="input-group">
-                    <label>Full name: </label>
-                    <input type="text" value="Jeffrey Aspiras">
-                </div>
-                <div class="input-group">
-                    <label>Password:</label>
-                    <input type="password" value="********">
-                </div>
-                <div class="input-group">
-                    <label>Email:</label>
-                    <input type="email" value="jefsohandsome1@gmail.com" readonly>
-                </div>
-                <div class="input-group">
-                    <label>Address:</label>
-                    <input type="text">
-                </div>
-                <div class="input-group">
-                    <label>Mobile Number: </label>
-                    <input type="text">
-                </div>
-                <div class="input-group">
-                    <label>Gender:</label>
-                    <input type="text" value="Male">
-                </div>
-                <button type="submit" class="save-btn">Save</button>
-                <button type="submit" id="logoutbtn">logout</button>
-            </form>
-        </section>
+  <nav>
+    <a href="./home.html" class="logo">
+      <img src="../assets/images/petslike-logo.png" alt="PetsLike Logo">
+    </a>
+    <div class="search-bar">
+      <input type="text" placeholder="Search">
+      <button type="submit" class="search-btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
     </div>
-
-    <footer>
-        <div class="footer-links">
-            <a href="#">Condition of Use</a>
-            <a href="#">Privacy Notice</a>
-            <a href="#">Help</a>
+    <div class="nav-links">
+      <a href="./account.html" class="nav-link">Account</a>
+      <a href="./cart.html" class="nav-link">Cart</a>
+      <a href="./orders.html" class="nav-link">Orders</a>
+    </div>
+  </nav>
+  <div class="account-container">
+    <aside class="sidebar">
+      <img id="profileImage" src="../assets/images/default-profile.png" alt="Profile Image">
+      <p class="username" id="username">User Name</p>
+      <a href="#" class="edit-profile" id="uploadProfileBtn">Upload Profile Picture</a>
+    </aside>
+    <section class="profile-section">
+      <h2>My Profile</h2>
+      <form id="profileForm">
+        <div class="input-group">
+          <label>First Name:</label>
+          <input type="text" id="firstname">
         </div>
-        <p>© 2025</p>
-    </footer>
-    <script src="../scripts/account.js" ></script>
+        <div class="input-group">
+          <label>Surname:</label>
+          <input type="text" id="surname">
+        </div>
+        <div class="input-group">
+          <label>Email:</label>
+          <input type="email" id="email" readonly>
+        </div>
+        <div class="input-group">
+          <label>Password:</label>
+          <input type="password" id="password">
+        </div>
+        <button type="submit" class="save-btn">Save</button>
+        <button type="button" id="logoutbtn">Logout</button>
+      </form>
+    </section>
+  </div>
+  <div id="profileModal" class="modal">
+    <div class="modal-content">
+      <span id="closeProfileModal" class="close">&times;</span>
+      <h2>Upload Profile Picture</h2>
+      <input type="file" id="modalProfilePicInput" accept="image/*">
+      <button id="uploadProfilePicBtn">Upload</button>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-links">
+      <a href="#">Condition of Use</a>
+      <a href="#">Privacy Notice</a>
+      <a href="#">Help</a>
+    </div>
+    <p>© 2025</p>
+  </footer>
+  <script src="../scripts/account.js"></script>
 </body>
 </html>

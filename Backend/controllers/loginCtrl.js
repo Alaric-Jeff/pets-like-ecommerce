@@ -13,6 +13,7 @@ export const validateLogin = [
     check("password").notEmpty().withMessage("Password is required"),
 ];
 
+    
     const loginController = async (req, res) => {
     const errors = validationResult(req);
     
@@ -22,7 +23,7 @@ export const validateLogin = [
 
     const { email, password } = req.body;
 
-    console.log(`email: ${email}, password: ${password}`)
+    logger.info(`data fields recieved in the login controller: email: ${email}, password: ${password}`)
 
     try {
         const account = await UserModel.findOne({ where: { email } });
@@ -38,7 +39,7 @@ export const validateLogin = [
         }
 
         const token = jwt.sign(
-            {userid: account.userid, role: account.role},
+            {userid: account.userid, role: account.role, email: account.email},
             process.env.JWT_SECRET,
             {expiresIn: '24h'}
         )

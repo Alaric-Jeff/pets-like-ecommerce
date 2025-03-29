@@ -15,24 +15,31 @@ const CartModel = Cart.init({
     }, 
     userid: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
-            model: UserModel,
+            model: UserModel, 
             key: "userid"
         }
     },
-    productId:{
+    productId: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
-            model: ProductModel,
+            model: ProductModel, 
             key: "productId"
-        }
-    },quantity:{
-        type: DataTypes.INTEGER
+        },
+    },
+    productName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
-    
-},{
+}, {
     sequelize: db,
-    modelName: "cart_model",
+    modelName: "CartModel",
     tableName: "cart_table",
     timestamps: true
 });

@@ -1,20 +1,38 @@
-import OrderModel from "../models/OrderModel.js";
+import OrderModel from '../models/OrderModel.js';
+import ProductModel from '../models/ProductModel.js';
+import ProductImageModel from '../models/ProductImageModel.js';
+import logger from '../utils/logger.js';
 
-const fetchOrders = async (req, res) => {
-    try{
-       const orders = await OrderModel.findAll()
+const fetchOrdersController = async (req, res) => {
+    try {
+        const orders = await OrderModel.findAll({
+            include: [
+                {
+                    model: ProductModel,
+                    include: [
+                        {
+                            model: ProductImageModel,
+                            attributes: ['imageUrl'] 
+                        }
+                    ]
+                }
+            ]
+        });
 
-       if(!orders){
-        return res.status(404).json({message: "no orders"})
-       }
+        if (!orders.length) {
+            return res.status(404).json({ message: "No orders found." });
+        }
 
-       console.log(`orders: ${orders}`)
-       return res.status(200).json({message: `successfully fetched the orders`, orders })
+        logger.info(`Successfully fetched ${orders.length} orders`);
+        return res.status(200).json({
+            message: "Successfully fetched all orders.",
+            orders
+        });
 
-    }catch(error){
-        console.error(`error occured in fetching orders controller`)
-        return res.status(500).json({message: "internal server error"})
+    } catch (error) {
+        logger.error(`Error occurred in fetching orders: ${error.message}`);
+        return res.status(500).json({ message: "Internal server error" });
     }
 };
 
-export default fetchOrders;
+export default fetchOrdersController;

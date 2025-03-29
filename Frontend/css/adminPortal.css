@@ -1,3 +1,4 @@
+/* Reset styles */
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +6,7 @@
     font-family: Arial, sans-serif;
 }
 
+/* Body Layout */
 body {
     display: flex;
     flex-direction: column;
@@ -12,6 +14,7 @@ body {
     background-color: #f4f4f4;
 }
 
+/* Navigation Bar */
 nav {
     background-color: #333;
     color: white;
@@ -35,16 +38,18 @@ nav span:hover {
     color: #ffcc00;
 }
 
+/* Main Content Section */
 .content-container {
-    flex: 1;
+    flex-grow: 1; /* Takes up remaining height */
     width: 100%;
     padding: 20px;
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Modal Styling */
 .modal {
     display: none;
     position: fixed;
@@ -57,22 +62,14 @@ nav span:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: fadeIn 0.3s ease-in-out;
 }
 
 .modal-content {
     background: white;
     padding: 25px;
-    border-radius: 10px;
     width: 450px;
-    text-align: center;
     position: relative;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.modal-content h2 {
-    margin-bottom: 15px;
-    color: #333;
 }
 
 .close, .close-update {
@@ -88,6 +85,12 @@ nav span:hover {
     color: #d9534f;
 }
 
+#addProductModal, #updateProductModal {
+    display: none;
+}
+
+
+/* Form Styling */
 .modal-content form {
     display: flex;
     flex-direction: column;
@@ -98,7 +101,6 @@ nav span:hover {
 .modal-content select,
 .modal-content textarea {
     padding: 10px;
-    border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px;
     width: 100%;
@@ -111,45 +113,81 @@ nav span:hover {
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 5px;
 }
 
 .modal-content button:hover {
     background-color: #218838;
 }
 
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 15px;
-    margin-top: 20px;
-    padding: 10px;
+/* Add Product Button */
+#openModalBtn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 20px; /* Space from "Manage Products" */
+    margin-bottom: 15px;
+    width: fit-content; /* Ensures it only takes as much space as needed */
+    display: inline-block; /* Prevents full-width stretching */
 }
 
+
+#openModalBtn:hover {
+    background-color: #218838;
+}
+
+/* Product List - Stretched Grid Layout */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 15px;
+    padding: 20px;
+    flex-grow: 1; /* Takes up remaining height */
+    width: 100%;
+    min-height: 100%;
+}
+
+/* Product Card */
 .product-item {
-    width: 220px;
     background: white;
     padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
 }
 
-.product-item h4 {
-    font-size: 18px;
-    margin-bottom: 5px;
+/* Product Image */
+.product-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    margin-bottom: 10px;
 }
 
-.product-item p {
+/* Product Details - Left-aligned */
+.product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.product-details h4 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.product-details p {
     font-size: 14px;
     color: #666;
 }
 
+/* Product Actions */
 .product-actions {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 10px;
     margin-top: 10px;
 }
@@ -159,50 +197,18 @@ nav span:hover {
     border: none;
     cursor: pointer;
     font-size: 18px;
+    padding: 5px 10px; /* Added button padding */
 }
 
-.product-actions .edit-btn img,
-.product-actions .delete-btn img {
+.product-actions img {
     width: 20px;
     height: 20px;
 }
 
+/* No Products Message */
 .no-products {
     text-align: center;
     font-size: 16px;
     color: #888;
     width: 100%;
-}
-
-#openModalBtn {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-#openModalBtn:hover {
-    background-color: #218838;
-}
-
-footer {
-    text-align: center;
-    padding: 10px;
-    background: #333;
-    color: white;
-    margin-top: auto;
-}
-
-textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-top: 10px;
-    font-size: 16px;
-    resize: vertical;
 }

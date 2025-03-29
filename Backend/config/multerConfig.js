@@ -1,46 +1,41 @@
-import multer from 'multer'
-import path from 'path'
-import fs from 'fs'
+import multer from 'multer';
+import path from 'path';
+import fs from 'fs';
 
-const uploadDirs  = {
-    products: '../utils/uploads/products',
-    profilePictures: '../utils/uploads/profilePictures'
-}
-Object.values(uploadDirs).forEach(dir => {
+// Ensure upload directories exist
+const productUploadPath = path.join('utils/uploads/products');
+const profileUploadPath = path.join('utils/uploads/profile_pictures');
+
+[productUploadPath, profileUploadPath].forEach((dir) => {
     if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
+        fs.mkdirSync(dir, { recursive: true });
     }
-  });
-  
-  const storage = multer.diskStorage({
+});
+
+const productStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-      const folder = req.body.folder || 'products'; 
-      const uploadPath = uploadDirs[folder] || uploadDirs.products;
-      cb(null, uploadPath);
+        console.log("Saving file to:", productUploadPath); // Debugger
+        cb(null, productUploadPath);
     },
     filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-      cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+        const filename = `${Date.now()}-${file.originalname}`;
+        console.log("Generated filename:", filename); // Debugger
+        cb(null, filename);
     }
-  });
-  
-  const fileFilter = (req, file, cb) => {
-    const fileTypes = /jpeg|jpg|png/;
-    const extName = fileTypes.test(path.extname(file.originalname).toLowerCase());
-    const mimeType = fileTypes.test(file.mimetype);
-  
-    if (mimeType && extName) {
-      return cb(null, true);
-    } else {
-      return cb(new Error('Only images (JPEG, JPG, PNG) are allowed'));
-    }
-  };
-  
+});
 
-  const upload = multer({
-    storage: storage,
-    limits: { fileSize: 20 * 1024 * 1024 }, 
-    fileFilter: fileFilter
-  });
-  
-  export default upload;
+const profileStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        console.log("Saving file to:", profileUploadPath); // Debugger
+        cb(null, profileUploadPath);
+    },
+    filename: function (req, file, cb) {
+        const filename = `${Date.now()}-${file.originalname}`;
+        console.log("Generated filename:", filename); // Debugger
+        cb(null, filename);
+    }
+});
+
+// Single file upload with correct field name
+export const uploadProductImage = multer({ storage: productStorage }).single("image");
+export const uploadProfilePicture = multer({ storage: profileStorage }).single("image");

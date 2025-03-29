@@ -22,10 +22,8 @@ const ProductImageModel = ProductImage.init(
       },
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE' 
-    },
-    imageUrl: {
-      type: DataTypes.STRING,
-      allowNull: false
+    }, image:{
+      type: DataTypes.STRING
     }
   },
   {

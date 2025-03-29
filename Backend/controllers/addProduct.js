@@ -12,21 +12,24 @@ const addProductController = async (req, res) => {
             productMeatType, 
             productAgeType, 
             productBreedType, 
-            isHealthTreat 
+            isHealthTreat
         } = req.body;
+
 
         if (!productName || !description || !productPrice || !productStock || !productMeatType || 
             !productAgeType || !productBreedType || isHealthTreat === undefined) {
+
             
-            logger.warn("Add product failed: Missing required fields", { 
+            
+            console.log("Add product failed: Missing required fields", { 
                 productName, description, productPrice, productStock, productMeatType, 
                 productAgeType, productBreedType, isHealthTreat
             });
 
             return res.status(400).json({ message: "Incomplete fields" });
         }
-        
-        const parsedPrice = parseFloat(productPrice);
+
+        const parsedPrice = parseFloat(productPrice).toFixed(2);
         const parsedStock = parseInt(productStock, 10);
 
         if (isNaN(parsedPrice) || isNaN(parsedStock)) {
@@ -36,7 +39,7 @@ const addProductController = async (req, res) => {
 
         let product = await ProductModel.findOne({
             where: {
-                productName: { [Op.like]: productName }  
+                productName: { [Op.eq]: productName }  
             }
         });
 
@@ -47,7 +50,7 @@ const addProductController = async (req, res) => {
             return res.status(200).json({ message: `Updated stock for ${productName}` });
         }
 
-        await ProductModel.create({
+        const newProduct = await ProductModel.create({
             productName,
             description,
             productPrice: parsedPrice,
@@ -58,8 +61,10 @@ const addProductController = async (req, res) => {
             isHealthTreat
         });
 
+        const productId = newProduct.getDataValue("productId"); 
+
         logger.info(`New product added: '${productName}', Price: ${parsedPrice}, Stock: ${parsedStock}`);
-        return res.status(201).json({ message: `Product '${productName}' added successfully` });
+        return res.status(201).json({ message: `Product '${productName}' added successfully`, productId });
 
     } catch (error) {
         logger.error(`Error in addProductController: ${error.message}`);
