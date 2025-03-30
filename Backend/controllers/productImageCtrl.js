@@ -26,8 +26,8 @@ const uploadProductImageController = async (req, res) => {
             return res.status(404).json({ message: "Product not found" });
         }
 
-        const imagePath = `/uploads/products/${req.file.filename}`;
-        console.log(`Saving image to database: ${imagePath}`);
+        const imagePath = `/uploads/products/${req.file.filename}`
+        console.log(`Saving image to database: ${imagePath}`)
         const existingImage = await ProductImageModel.findOne({ where: { productId } });
 
         if (existingImage) {

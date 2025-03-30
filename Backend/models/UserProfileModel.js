@@ -13,12 +13,12 @@ const UserProfileModel = UserProfile.init(
       allowNull: false,
       autoIncrement: true
     },
-    userId: {  
+    userid: {  
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: UserModel,
-        key: "userId"
+        key: "userid"
       },
       onUpdate: "CASCADE",
       onDelete: "CASCADE" 

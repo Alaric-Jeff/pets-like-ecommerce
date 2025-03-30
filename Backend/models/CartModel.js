@@ -27,7 +27,11 @@ const CartModel = Cart.init({
         references: {
             model: ProductModel, 
             key: "productId"
-        },
+        }
+    },
+    productPrice: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
     productName: {
         type: DataTypes.STRING,
@@ -36,12 +40,24 @@ const CartModel = Cart.init({
     quantity: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+    totalPrice: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
     }
 }, {
     sequelize: db,
     modelName: "CartModel",
     tableName: "cart_table",
-    timestamps: true
+    timestamps: true,
+    hooks: {
+        beforeSave: (cart, options) => {
+            if(cart.productPrice && cart.quantity) {
+                cart.totalPrice = cart.productPrice * cart.quantity;
+            }
+        }
+    }
 });
 
 export default CartModel;

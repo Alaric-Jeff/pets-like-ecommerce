@@ -40,7 +40,7 @@ nav span:hover {
 
 /* Main Content Section */
 .content-container {
-    flex-grow: 1; /* Takes up remaining height */
+    flex-grow: 1;
     width: 100%;
     padding: 20px;
     background: white;
@@ -68,6 +68,8 @@ nav span:hover {
     background: white;
     padding: 25px;
     width: 450px;
+    max-height: 80vh;
+    overflow-y: auto;
     position: relative;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -88,7 +90,6 @@ nav span:hover {
 #addProductModal, #updateProductModal {
     display: none;
 }
-
 
 /* Form Styling */
 .modal-content form {
@@ -127,12 +128,11 @@ nav span:hover {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    margin-left: 20px; /* Space from "Manage Products" */
+    margin-left: 20px;
     margin-bottom: 15px;
-    width: fit-content; /* Ensures it only takes as much space as needed */
-    display: inline-block; /* Prevents full-width stretching */
+    width: fit-content;
+    display: inline-block;
 }
-
 
 #openModalBtn:hover {
     background-color: #218838;
@@ -141,10 +141,10 @@ nav span:hover {
 /* Product List - Stretched Grid Layout */
 .product-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 15px;
     padding: 20px;
-    flex-grow: 1; /* Takes up remaining height */
+    flex-grow: 1;
     width: 100%;
     min-height: 100%;
 }
@@ -164,45 +164,6 @@ nav span:hover {
     height: 180px;
     object-fit: cover;
     margin-bottom: 10px;
-}
-
-/* Product Details - Left-aligned */
-.product-details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-}
-
-.product-details h4 {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.product-details p {
-    font-size: 14px;
-    color: #666;
-}
-
-/* Product Actions */
-.product-actions {
-    display: flex;
-    justify-content: flex-start;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.product-actions button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 5px 10px; /* Added button padding */
-}
-
-.product-actions img {
-    width: 20px;
-    height: 20px;
 }
 
 /* No Products Message */

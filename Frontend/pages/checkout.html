@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="../css/checkout.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <nav>
+    <a href="./home.html" class="logo">
+      <img src="../assets/images/petslike-logo.png" alt="PetsLike Logo">
+    </a>
+    <div class="search-bar">
+      <input type="text" placeholder="Search">
+      <button type="submit" class="search-btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+    <div class="nav-links">
+      <a href="./account.html" class="nav-link">Account</a>
+      <a href="./cart.html" class="nav-link">Cart</a>
+      <a href="./orders.html" class="nav-link">Orders</a>
+    </div>
+  </nav>
+  <div class="checkout-container">
+    <div class="checkout-left">
+      <div class="delivery-address">
+        <h2>Delivery Address</h2>
+        <p id="user-fullname">Loading...</p>
+        <p id="user-address">Loading...</p>
+        <p id="user-contact">Loading...</p>
+      </div>
+      <div id="selected-cart-items"></div>
+    </div>
+    <div class="checkout-right">
+      <div class="payment-method">
+        <h3>Select Payment Method</h3>
+        <div>
+          <input type="radio" id="cod" name="payment" checked>
+          <label for="cod">Cash on Delivery</label>
+        </div>
+      </div>
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span>₱0.00</span>
+        </div>
+        <div class="summary-line">
+          <span>Shipping Fee</span>
+          <span>₱0.00</span>
+        </div>
+        <div class="summary-total">
+          <span>Total</span>
+          <span>₱0.00</span>
+        </div>
+      </div>
+      <button class="place-order-btn">Place Order</button>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-links">
+      <a href="#">Condition of Use</a>
+      <a href="#">Privacy Notice</a>
+      <a href="#">Help</a>
+    </div>  
+    <p>© 2025</p>
+  </footer>
+  <script src="../scripts/checkout.js"></script>
+</body>
+</html>

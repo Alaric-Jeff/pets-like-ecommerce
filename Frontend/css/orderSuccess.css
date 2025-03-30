@@ -1,0 +1,100 @@
+/* order-success.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  body {
+    background-color: #f5f5f5;
+  }
+  .order-success-container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  .thank-you h1 {
+    color: #ff9f00;
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  .order-amount {
+    font-size: 24px;
+    color: #f57224;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .delivery-info {
+    margin-bottom: 20px;
+  }
+  .delivery-details {
+    background: #fafafa;
+    border: 1px solid #eee;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  .delivery-details h2 {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 18px;
+  }
+  .delivery-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  .delivery-item p {
+    margin: 0;
+    color: #555;
+  }
+  .delivery-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+  }
+  .tracking-notice {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #777;
+  }
+  .view-order-btn {
+    background: #4285f4;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  .view-order-btn:hover {
+    background: #357ae8;
+  }
+  .order-summary {
+    text-align: center;
+  }
+  .order-summary h2 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  .final-total {
+    font-size: 24px;
+    color: #f57224;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .shop-more-btn {
+    background: #f57224;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  .shop-more-btn:hover {
+    background: #e5611a;
+  }
+  

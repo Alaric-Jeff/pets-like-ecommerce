@@ -6,27 +6,42 @@ import ProductImageModel from "../models/ProductImageModel.js";
 import ProductReviewModel from "../models/ProductReviewModel.js";
 import CartModel from "../models/CartModel.js";
 import ProfileImageModel from "../models/ProfileImageModel.js";
+import ReviewLikeModel from "../models/ReviewLikeModel.js";
 import logger from "../utils/logger.js";
 
-
 const initializeTableSetup = async () => {
-    logger.info("• Initializing Tables.....")
+    logger.info("• Initializing Tables.....");
     try {
-        await Promise.all([
-            UserModel.sync({ alter: false }).then(() => logger.info("• Users' table initialized")),
-            ProductModel.sync({ alter: false }).then(() => logger.info("• Products' table initialized")),
-            OrderModel.sync({ alter: false }).then(() => logger.info("• Orders' table initialized")),
-            UserProfileModel.sync({ alter: false }).then(() => logger.info("• Users' profile table initialized")),
-            ProductImageModel.sync({ alter: false }).then(() => logger.info("• Products' images table initialized")),
-            ProductReviewModel.sync({ alter: false }).then(() => logger.info("• Products' reviews table initialized")),
-            CartModel.sync({ alter: false }).then(() => logger.info("• Carts table initialized")),
-            ProfileImageModel.sync({ alter: false }).then(() => logger.info("• Profile Image table initialized"))
-        ]);
-
+        await UserModel.sync({ alter: false });
+        logger.info("[1]. Users' table initialized");
+        
+        await ProductModel.sync({ alter: true });
+        logger.info("[2] Products' table initialized");
+        
+        await OrderModel.sync({ alter: false });
+        logger.info("[3] Orders' table initialized");
+        
+        await UserProfileModel.sync({ alter: false });
+        logger.info("[4] Users' profile table initialized");
+        
+        await ProductImageModel.sync({ alter: true });
+        logger.info("[5] Products' images table initialized");
+        
+        await ProductReviewModel.sync({ alter: false });
+        logger.info("[6] Products' reviews table initialized");
+        
+        await CartModel.sync({ alter: false });
+        logger.info("[7] Carts table initialized");
+        
+        await ProfileImageModel.sync({ alter: false });
+        logger.info("[8] Profile Image table initialized");
+        
+        await ReviewLikeModel.sync({ alter: false });
+        logger.info("[9] Review's Like table initialized");
+        
         logger.info("All tables successfully initialized!");
-
     } catch (error) {
-        console.error(`error: ${error}`)
+        console.error(`error: ${error}`);
         logger.error(`Error initializing tables: ${error.message}`);
     }
 };

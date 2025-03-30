@@ -16,6 +16,12 @@ import adminFetchProduct from '../controllers/adminFetchOrders.js'
 import addToCartRoute from '../routers/addToCartRoute.js'
 import fetchCartRoute from '../routers/fetchCart.js'
 import ProfileImageRoute from '../routers/profileImageRoute.js'
+import getReviewsPerProductRoute from '../routers/getReviewsRoute.js'
+import displaySpecificProductRoute from '../routers/displaySpecificRoute.js'
+import deleteCartRoute from '../routers/deleteCartRoute.js'
+import selectedFetchControllerRoute from '../routers/fetchSelectedCartRoute.js'
+import getUserInfoRoute from '../routers/getUserInfoRoute.js'
+import updateCartQuantityRoute from '../routers/updateCartQuantity.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,12 +37,20 @@ const initializeRoutes = (app)=> {
     app.use('/get-profile', getProfileRoute)
     app.use('/send-order-route', sendOrderRoute)
     app.use('/add-to-cart', addToCartRoute)
-    app.use('/cart', fetchCartRoute)
-   
+    app.use('/fetch-cart', fetchCartRoute)
+    app.use('/display-product', displaySpecificProductRoute)
+    app.use('/delete-cart', deleteCartRoute)
+    app.use('/fetch-selected-cart', selectedFetchControllerRoute)
+    app.use('/get-user-info', getUserInfoRoute)
+    app.use('/update-cart-quantity', updateCartQuantityRoute)
 
+   
     app.use('/uploads', express.static(path.join(__dirname, '../utils/uploads')));
     app.use('/upload-product-image', uploadRoute)
     app.use('/upload-profile-image', ProfileImageRoute);
+
+    //independent product section
+    app.use('/get-reviews', getReviewsPerProductRoute)
 
     //admin section
     app.use('/add-product', addProductRoute)

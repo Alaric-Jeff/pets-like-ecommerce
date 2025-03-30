@@ -6,7 +6,6 @@
     <title>Admin - Manage Products</title>
     <link rel="stylesheet" href="../css/adminPortal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
 </head>
 <body>
     <nav>
@@ -27,25 +26,33 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h2>Add Product</h2>
-                <form id="productForm" enctype="multipart/form-data">
-                    <input type="text" id="productName" placeholder="Product Name" required>
-                    <input type="number" id="productPrice" placeholder="Price" required>
-                    <input type="number" id="productStock" placeholder="Stock Quantity" min="1" required>
+                <form id="productForm">
+                    <label for="productName">Product Name</label>
+                    <input type="text" id="productName" required>
 
-                        <select id="ageCategory" required>
-                            <option value="">Select Age Category</option>
-                            <option value="Puppy">Puppy</option>
-                            <option value="Adult">Adult</option>
-                            <option value="Senior">Senior</option>
-                        </select>
+                    <label for="productPrice">Price</label>
+                    <input type="number" id="productPrice" required>
 
-                        <select id="breedCategory" required>
-                            <option value="">Select Breed Size</option>
-                            <option value="Small">Small</option>
-                            <option value="Medium">Medium</option>
-                            <option value="Large">Large</option>
-                        </select>
+                    <label for="productStock">Stock Quantity</label>
+                    <input type="number" id="productStock" min="1" required>
 
+                    <label for="ageCategory">Age Category</label>
+                    <select id="ageCategory" required>
+                        <option value="">Select Age Category</option>
+                        <option value="Puppy">Puppy</option>
+                        <option value="Adult">Adult</option>
+                        <option value="Senior">Senior</option>
+                    </select>
+
+                    <label for="breedCategory">Breed Size</label>
+                    <select id="breedCategory" required>
+                        <option value="">Select Breed Size</option>
+                        <option value="Small">Small</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Large">Large</option>
+                    </select>
+
+                    <label for="meatType">Meat Type</label>
                     <select id="meatType" required>
                         <option value="">Select Meat Type</option>
                         <option value="Chicken">Chicken</option>
@@ -57,10 +64,12 @@
                         <input type="checkbox" id="isHealthTreat"> Health Treat?
                     </label>
 
-                    <textarea id="productDescription" placeholder="Product Description"></textarea>
+                    <label for="productDescription">Product Description</label>
+                    <textarea id="productDescription"></textarea>
+                    
+                    <label for="productImage">Upload Image</label>
+                     <input type="file" id="productImage" accept="image/*">
 
-                    <label for="productImage">Add Image</label>
-                    <input type="file" id="productImage" accept="image/*" required>
 
                     <button type="submit">Add Product</button>
                 </form>
@@ -73,10 +82,22 @@
                 <h2>Update Product</h2>
                 <form id="updateForm">
                     <input type="hidden" id="updateProductId">
-                    <input type="text" id="updateProductName" placeholder="Product Name" required>
-                    <input type="number" id="updateProductPrice" placeholder="Price" required>
-                    <input type="number" id="updateProductStock" placeholder="Stock Quantity" min="1" required>
-                    <textarea id="updateProductDescription" placeholder="Product Description" required></textarea>
+
+                    <label for="updateProductName">Product Name</label>
+                    <input type="text" id="updateProductName" required>
+
+                    <label for="updateProductPrice">Price</label>
+                    <input type="number" id="updateProductPrice" required>
+
+                    <label for="updateProductStock">Stock Quantity</label>
+                    <input type="number" id="updateProductStock" min="1" required>
+
+                    <label for="updateProductDescription">Product Description</label>
+                    <textarea id="updateProductDescription" required></textarea>
+
+                    <label for="updateProductImage">Upload Image</label>
+                    <input type="file" id="updateProductImage" accept="image/*">
+
                     <button type="submit">Update Product</button>
                 </form>
             </div>
@@ -85,6 +106,6 @@
         <div class="product-list" id="productList"></div>
     </div>
 
-    <script src="../scripts/adminPortal.js" defer ></script>
+    <script src="../scripts/adminPortal.js" defer></script>
 </body>
 </html>

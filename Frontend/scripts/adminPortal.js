@@ -90,7 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p>Stock: ${product.productStock}</p>
                 <p>${product.description}</p>
                 <div class="product-actions">
-                    <button class="edit-btn" data-id="${product.productId}">
+                    <button class="edit-btn" data-id="${product.productId}" 
+                        data-name="${product.productName}" 
+                        data-price="${product.productPrice}" 
+                        data-stock="${product.productStock}" 
+                        data-description="${product.description}">
                         <i class="fas fa-edit"></i> Edit
                     </button>
                     <button class="delete-btn" data-id="${product.productId}">
@@ -100,6 +104,44 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>`;
         productList.appendChild(item);
     }
+
+    productList.addEventListener("click", async (event) => {
+        const editBtn = event.target.closest(".edit-btn");
+        if (editBtn) {
+            const productId = editBtn.dataset.id;
+            console.log("Opening Update Modal for Product:", productId);
+            document.getElementById("updateProductId").value = productId;
+            document.getElementById("updateProductName").value = editBtn.dataset.name;
+            document.getElementById("updateProductPrice").value = editBtn.dataset.price;
+            document.getElementById("updateProductStock").value = editBtn.dataset.stock;
+            document.getElementById("updateProductDescription").value = editBtn.dataset.description;
+            toggleModal(updateModal, true);
+        }
+    
+        const deleteBtn = event.target.closest(".delete-btn");
+        if (deleteBtn) {
+            const productId = deleteBtn.dataset.id;
+            console.log("Attempting to delete product:", productId);
+            if (!confirm("Are you sure you want to delete this product?")) return;
+            try {
+                const res = await fetch("http://localhost:3000/delete-product", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ productId })
+                });
+                const data = await res.json();
+                console.log("Delete Product Response:", data);
+                if (res.ok) {
+                    deleteBtn.closest(".product-item").remove();
+                }
+            } catch (error) {
+                console.error("Error deleting product:", error);
+            }
+        }
+    });
 
     productForm.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -150,32 +192,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    productList.addEventListener("click", async (event) => {
-        const deleteBtn = event.target.closest(".delete-btn");
-        if (deleteBtn) {
-            const productId = deleteBtn.dataset.id;
-            console.log("Attempting to delete product:", productId);
-            if (!confirm("Are you sure you want to delete this product?")) return;
-            try {
-                const res = await fetch("http://localhost:3000/delete-product", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`
-                    },
-                    body: JSON.stringify({ productId })
-                });
-                const data = await res.json();
-                console.log("Delete Product Response:", data);
-                if (res.ok) {
-                    deleteBtn.closest(".product-item").remove();
-                }
-            } catch (error) {
-                console.error("Error deleting product:", error);
-            }
-        }
-    });
-
     updateForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         const productId = document.getElementById("updateProductId").value;
@@ -196,13 +212,35 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify({ productId, ...updateData })
             });
             if (!res.ok) throw new Error("Failed to update product");
+            console.log("Product updated successfully");
+    
+            const updateProductImageElement = document.getElementById("updateProductImage");
+            console.log("Update Product Image Element:", updateProductImageElement);
+            const productImageFile = updateProductImageElement ? updateProductImageElement.files[0] : null;
+            console.log("Update Product Image File:", productImageFile);
+            if (productImageFile) {
+                console.log("Uploading updated product image...");
+                const imageFormData = new FormData();
+                imageFormData.append("productId", productId);
+                imageFormData.append("image", productImageFile);
+    
+                const imageRes = await fetch("http://localhost:3000/upload-product-image", {
+                    method: "POST",
+                    headers: { "Authorization": `Bearer ${token}` },
+                    body: imageFormData
+                });
+    
+                if (!imageRes.ok) throw new Error("Failed to upload updated image");
+                console.log("Product image updated successfully");
+            }
+    
             toggleModal(updateModal, false);
             fetchProducts();
         } catch (error) {
             console.error("Error updating product:", error);
         }
     });
-
+    
     console.log("Fetching products on page load");
     fetchProducts();
 });
