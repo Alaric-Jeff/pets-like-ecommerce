@@ -39,10 +39,7 @@ const updateProductController = async (req, res) => {
             description,  
             productStock,
             productPrice,
-            productMeatType,
-            productAgeType,
-            productBreedType,
-            isHealthTreat
+            productMeatType
         })}`);
 
         await product.update({
@@ -51,9 +48,6 @@ const updateProductController = async (req, res) => {
             productStock,
             productPrice,
             productMeatType,
-            productAgeType,
-            productBreedType,
-            isHealthTreat
         });
 
         logger.info(`Product with ID '${productId}' updated successfully.`);
