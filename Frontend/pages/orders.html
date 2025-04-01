@@ -35,8 +35,8 @@
                     <th>Quantity</th>
                     <th>Total Price</th>
                     <th>Status</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
+                    <th>Date</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,6 +44,27 @@
             </tbody>
         </table>
         <p class="no-orders-message" style="display: none;">No orders</p>
+    </div>
+
+    <!-- Rate Modal -->
+    <div id="rate-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Rate Your Order</h3>
+            <div class="rating-stars">
+                <span data-value="1" class="star">&#9733;</span>
+                <span data-value="2" class="star">&#9733;</span>
+                <span data-value="3" class="star">&#9733;</span>
+                <span data-value="4" class="star">&#9733;</span>
+                <span data-value="5" class="star">&#9733;</span>
+            </div>
+            <textarea id="rate-comment" placeholder="Leave a comment..." rows="4"></textarea>
+            <p id="char-count" style="text-align: right; font-size: 12px; color: gray;">0/60</p>
+            <div class="thumbs">
+                <button id="thumbs-up" class="thumb-btn"><i class="fa-solid fa-thumbs-up"></i></button>
+            </div>
+            <button id="submit-rating" class="submit-btn">Submit</button>
+        </div>
     </div>
 
     <footer>

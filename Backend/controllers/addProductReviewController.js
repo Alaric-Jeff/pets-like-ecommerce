@@ -4,39 +4,45 @@ import UserModel from "../models/UserModel.js";
 
 const addProductReviewController = async (req, res) => {
     try {
-        const { productId } = req.params; // Extract productId from the request parameters
-        const { userid, rating, reviewText, liked } = req.body; // Extract review details from the request body
+        console.log("Request received to add a product review.");
+        console.log("Request body:", req.body);
 
-        // Validate input
+        const { userid, productId, rating, reviewText, liked } = req.body;
+
         if (!productId || !userid || !rating || !reviewText) {
+            console.log("Validation failed: Missing required fields.");
             return res.status(400).json({ message: "All fields are required: productId, userid, rating, reviewText." });
         }
 
-        // Check if the product exists
+        console.log(`Checking if product with ID ${productId} exists.`);
         const product = await ProductModel.findByPk(productId);
         if (!product) {
+            console.log(`Product with ID ${productId} not found.`);
             return res.status(404).json({ message: "Product not found." });
         }
 
-        // Check if the user exists
+        console.log(`Checking if user with ID ${userid} exists.`);
         const user = await UserModel.findByPk(userid);
         if (!user) {
+            console.log(`User with ID ${userid} not found.`);
             return res.status(404).json({ message: "User not found." });
         }
 
-        // Check if the rating is within the valid range
         if (rating < 1 || rating > 5) {
+            console.log(`Validation failed: Rating ${rating} is out of range.`);
             return res.status(400).json({ message: "Rating must be between 1 and 5." });
         }
 
-        // Create the review
+        console.log("Creating a new product review.");
         const newReview = await ProductReviewModel.create({
             productId,
             userid,
             rating,
             reviewText,
-            likes: liked ? 1 : 0 // Increment likes if the user liked the product
+            likes: liked ? 1 : 0
         });
+
+        console.log("Review created successfully:", newReview);
 
         return res.status(201).json({
             message: "Review added successfully.",
