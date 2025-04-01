@@ -16,7 +16,10 @@ const AssociationConfig = () => {
   UserModel.hasOne(UserProfileModel, { foreignKey: "userid", onDelete: "CASCADE" });
   UserProfileModel.belongsTo(UserModel, { foreignKey: "userid" });
 
-  // Cart associations (User and Product)
+  // User has many Orders
+UserModel.hasMany(OrderModel, { foreignKey: "userid", onDelete: "CASCADE" });
+OrderModel.belongsTo(UserModel, { foreignKey: "userid" });
+
   UserModel.hasMany(CartModel, { foreignKey: "userid", onDelete: "CASCADE" });
   CartModel.belongsTo(UserModel, { foreignKey: "userid" });
   

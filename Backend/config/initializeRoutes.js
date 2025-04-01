@@ -25,7 +25,9 @@ import updateCartQuantityRoute from '../routers/updateCartQuantity.js'
 import updateOrderStatusRoute from '../routers/updateOrderStatusRoute.js';
 import fetchSelectedOrderController from '../routers/fetchSelectedOrders.js'
 import updateProductQuantityRoute from '../routers/updateProductQuantityRouter.js'
+import getAllOrdersRoute from '../routers/getAllOrdersAdminRoute.js'
 import getOrders from '../routers/fetchOrderRouter.js'
+import approveOrderRoute from '../routers/approveRoute.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -66,6 +68,8 @@ const initializeRoutes = (app)=> {
     app.use('/delete-product', deleteProductRoute)
     app.use('/get-products', getAllProductsRoute)
     app.use('/get-orders', getOrders)
+    app.use('/get-all-orders-admin', getAllOrdersRoute)
+    app.use('/approve-orders', approveOrderRoute)
 }
 
 export default initializeRoutes;

@@ -53,7 +53,7 @@ const OrderModel = Order.init(
     },
     orderStatus: {
       type: DataTypes.STRING,
-      defaultValue: "To Review"
+      defaultValue: "Pending"
     }
   },
   {
