@@ -10,9 +10,6 @@ const addProductController = async (req, res) => {
             productPrice, 
             productStock, 
             productMeatType, 
-            productAgeType, 
-            productBreedType, 
-            isHealthTreat
         } = req.body;
 
 

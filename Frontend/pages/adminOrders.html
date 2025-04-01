@@ -8,22 +8,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <h1>Admin Orders</h1>
-    <table class="admin-orders-table">
-        <thead>
-            <tr>
-                <th>User</th>
-                <th>Product Name</th>
-                <th>Product Price</th>
-                <th>Quantity</th>
-                <th>Total Price</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Orders will be dynamically populated here -->
-        </tbody>
-    </table>
+
+    <nav>
+        <a href="adminDashboard.html">Petslike</a>
+        <div>
+            <a href="adminPortal.html">Products</a>
+            <a href="adminOrders.html">Orders</a>
+            <a href="adminAnalytics.html">Analytics</a>
+            <button onclick="LogOutAdmin()" id="logout">Logout</button>
+        </div>
+    </nav>
+
+    <div class="content-container">
+        <h1>Admin Orders</h1>
+        <table class="admin-orders-table">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Orders will be dynamically populated here -->
+            </tbody>
+        </table>
+    </div>
 
     <script src="../scripts/adminOrder.js"></script>
 </body>

@@ -32,18 +32,7 @@ const ProductModel = Product.init({
         type: DataTypes.STRING,
         allowNull: false
     },
-    productAgeType:{
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    productBreedType:{
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    productisHealthTreat:{
-        type: DataTypes.BOOLEAN
-    }
-
+    
 }, {
     sequelize: db,
     tableName: "product_table",

@@ -9,10 +9,7 @@ const updateProductController = async (req, res) => {
             description,
             productPrice, 
             productStock, 
-            productMeatType, 
-            productAgeType, 
-            productBreedType, 
-            isHealthTreat 
+            productMeatType
         } = req.body;
 
         console.log(`Received update request for product with ID: ${productId}`);

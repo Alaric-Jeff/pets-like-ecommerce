@@ -5,57 +5,144 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PetsLike - Sign Up</title>
   <link rel="stylesheet" href="../css/signup.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
+  <div class="logo-container" style="text-align: center;">
+    <img src="../assets/images/petslik-logo.png" alt="PetsLike Logo" class="logo" style="display: inline-block;">
+  </div>
 
   <div class="signup-wrapper"> 
     <div class="signup-container">
-      <h2>Sign Up</h2>
-      <form id="signupform">
-        <label for="firstname">First name</label>
-        <input type="text" id="firstname" name="firstname" placeholder="must be between 3 and 30 characters" >
-
-        <label for="surname" >Surname</label>
-        <input type="text" id="surname" name="surname" placeholder="must be between 3 and 30 characters">
-
-        <div class="email-container">
-          <input type="email" id="email" name="email" required placeholder="Enter your email" />
-          <button type="button" onclick="sendCode()" class="send-code-btn">Send Code</button>
+      <h2>Create Your Account</h2>
+      <form id="signupform" novalidate>
+        <div class="form-group">
+          <label for="firstname">First name</label>
+          <div class="input-wrapper">
+            <i class="fas fa-user"></i>
+            <input type="text" id="firstname" name="firstname" placeholder="must be between 3 and 30 characters" 
+                   aria-label="First name" minlength="3" maxlength="30">
+            <span class="error-message"></span>
+          </div>
         </div>
 
-        <div class="verification-container">
-          <input type="text" id="code" name="code" placeholder="Enter 6-digit code" required />
-          <button type="button" onclick="verifyCode()" class="verify-code-btn">Verify Code</button>
+        <div class="form-group">
+          <label for="surname">Surname</label>
+          <div class="input-wrapper">
+            <i class="fas fa-user"></i>
+            <input type="text" id="surname" name="surname" placeholder="must be between 3 and 30 characters"
+                   aria-label="Surname" minlength="3" maxlength="30">
+            <span class="error-message"></span>
+          </div>
         </div>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password (minimum of 8 characters)" name="password" required />
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <div class="input-wrapper">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="email" name="email" required placeholder="Enter your email" 
+                     aria-label="Email address" aria-describedby="email-error">
+              <span class="error-message" id="email-error"></span>
+            </div>
+            <button type="button" onclick="sendCode()" class="send-code-btn">
+              <span class="btn-text">Send Code</span>
+              <span class="btn-loader"></span>
+            </button>
+          </div>
 
-        <button type="submit">Sign Up</button>
-      </form>
+          <div class="form-group">
+            <label for="code">Verification Code</label>
+            <div class="input-wrapper">
+              <i class="fas fa-key"></i>
+              <input type="text" id="code" name="code" placeholder="Enter 6-digit code" required 
+                     aria-label="Verification code" maxlength="6" pattern="[0-9]{6}">
+              <span class="error-message"></span>
+            </div>
+            <button type="button" onclick="verifyCode()" class="verify-code-btn">
+              <span class="btn-text">Verify Code</span>
+              <span class="btn-loader"></span>
+            </button>
+          </div>
 
-      <p class="terms">By signing up, you agree to PetsLike's <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+          <div class="form-group">
+            <label for="password">
+                Password 
+                <i class="fas fa-info-circle ms-1" style="color: #68B6F5; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#passwordRequirementsModal"></i>
+            </label>
+            <div class="input-wrapper">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="password" placeholder="Enter your password (minimum of 8 characters)" 
+                     name="password" required aria-label="Password" minlength="8">
+              <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                <i class="fas fa-eye"></i>
+              </button>
+              <span class="error-message"></span>
+            </div>
+            <div class="password-strength">
+              <div class="strength-bar"></div>
+              <span class="strength-text">Password strength: <span class="strength-value">Weak</span></span>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <span class="btn-text">Create Account</span>
+            <span class="btn-loader"></span>
+          </button>
+        </form>
+
+        <p class="terms">By signing up, you agree to PetsLike's <a href="#" class="terms-link">Terms</a> and <a href="#" class="terms-link">Privacy Policy</a>.</p>
+      </div>
     </div>
 
     <div class="login-section">
-      <p>Already have an account?</p>
-      <div class="divider"></div> 
-      <button id="loginBtn" class="login-btn">Login your account</button>
+      <div class="login-content bg-white p-4 rounded-3 shadow-sm">
+        <h2>Welcome Back!</h2>
+        <p>Already have an account?</p>
+        <div class="divider"></div> 
+        <button id="loginBtn" class="login-btn">
+          <i class="fas fa-sign-in-alt"></i>
+          <span>Login your account</span>
+        </button>
+      </div>
     </div>
   </div>
 
-  <footer>
-    <a href="#">Condition of Use</a>
-    <a href="#">Privacy Notice</a>
-    <a href="#">Help</a>
-    <p>© 2025</p>
-</footer>
-
-
   <div id="modal" class="modal">
     <div class="modal-content">
+      <div class="modal-header">
+        <i class="fas fa-info-circle"></i>
+        <h3 id="modal-title">Notification</h3>
+      </div>
       <p id="modal-message"></p>
-      <button onclick="closeModal()">OK</button>
+      <div class="modal-footer">
+        <button onclick="closeModal()" class="modal-btn">OK</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="passwordRequirementsModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="passwordModalLabel">Password Requirements</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="password-requirements">
+                    <p class="text-muted mb-3">Password must contain:</p>
+                    <ul class="requirements-list">
+                        <li id="length-check"><i class="fas fa-circle-xmark text-danger"></i> At least 8 characters</li>
+                        <li id="uppercase-check"><i class="fas fa-circle-xmark text-danger"></i> At least 1 uppercase letter</li>
+                        <li id="lowercase-check"><i class="fas fa-circle-xmark text-danger"></i> At least 1 lowercase letter</li>
+                        <li id="number-check"><i class="fas fa-circle-xmark text-danger"></i> At least 1 number</li>
+                        <li id="special-check"><i class="fas fa-circle-xmark text-danger"></i> At least 1 special character</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" style="background-color: #68B6F5; border-color: #68B6F5;">Got it</button>
+            </div>
+        </div>
     </div>
   </div>
   

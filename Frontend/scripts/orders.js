@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     async function handleCancelOrder(orderId) {
         try {
-            const response = await fetch(`http://localhost:3000/cancel-order`, {
+            const cancelResponse = await fetch(`http://localhost:3000/cancel-order`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 body: JSON.stringify({ orderId })
             });
 
-            if (!response.ok) {
+            if (!cancelResponse.ok) {
                 throw new Error("Failed to cancel order.");
             }
 
@@ -106,6 +106,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             await fetchAndRenderOrders();
         } catch (error) {
             alert("An error occurred while canceling the order. Please try again.");
+            console.error(error);
         }
     }
 

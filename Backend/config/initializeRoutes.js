@@ -29,6 +29,7 @@ import getAllOrdersRoute from '../routers/getAllOrdersAdminRoute.js'
 import getOrders from '../routers/fetchOrderRouter.js'
 import approveOrderRoute from '../routers/approveRoute.js'
 import productReviewRoute from '../routers/addProductReviewRoute.js'
+import cancelOrderRoute from '../routers/cancelOrderRoute.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -54,6 +55,7 @@ const initializeRoutes = (app)=> {
     app.use('/update-product-quantity', updateProductQuantityRoute)
     app.use('/fetch-selected-orders', fetchSelectedOrderController)
     app.use('/product-review', productReviewRoute)
+    app.use('/cancel-order', cancelOrderRoute)
     
     app.use('/uploads', express.static(path.join(__dirname, '../utils/uploads')));
     app.use('/upload-product-image', uploadRoute)

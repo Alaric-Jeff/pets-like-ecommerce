@@ -9,11 +9,11 @@
 </head>
 <body>
     <nav>
-        <a>Petslike</a>
+        <a href="adminDashboard.html">Petslike</a>
         <div>
-            <span>Products</span>
-            <span>Orders</span>
-            <span>Analytics</span>
+            <a href="adminPortal.html">Products</a>
+            <a href="adminOrders.html">Orders</a>
+            <a href="adminAnalytics.html">Analytics</a>
             <button onclick="LogOutAdmin()" id="logout">Logout</button>
         </div>
     </nav>
@@ -34,23 +34,7 @@
                     <input type="number" id="productPrice" required>
 
                     <label for="productStock">Stock Quantity</label>
-                    <input type="number" id="productStock" min="1" required>
-
-                    <label for="ageCategory">Age Category</label>
-                    <select id="ageCategory" required>
-                        <option value="">Select Age Category</option>
-                        <option value="Puppy">Puppy</option>
-                        <option value="Adult">Adult</option>
-                        <option value="Senior">Senior</option>
-                    </select>
-
-                    <label for="breedCategory">Breed Size</label>
-                    <select id="breedCategory" required>
-                        <option value="">Select Breed Size</option>
-                        <option value="Small">Small</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Large">Large</option>
-                    </select>
+                    <input type="number" id="productStock" min="1" required>                   
 
                     <label for="meatType">Meat Type</label>
                     <select id="meatType" required>
@@ -58,11 +42,8 @@
                         <option value="Chicken">Chicken</option>
                         <option value="Beef">Beef</option>
                         <option value="Fish">Fish</option>
+                        <option value="Pork">Pork</option>
                     </select>
-
-                    <label>
-                        <input type="checkbox" id="isHealthTreat"> Health Treat?
-                    </label>
 
                     <label for="productDescription">Product Description</label>
                     <textarea id="productDescription"></textarea>
