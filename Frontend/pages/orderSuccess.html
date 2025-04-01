@@ -3,27 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Order Success</title>
+  <title>Order Success - Petslike</title>
   <link rel="stylesheet" href="../css/orderSuccess.css">
 </head>
 <body>
   <div class="order-success-container">
     <div class="thank-you">
       <h1>Thank you for your purchase!</h1>
-      <p class="order-amount">₱542.79</p>
-      <p>Your order number is <strong>986314391968003, 986314381868003</strong></p>
+      <p id="order-amount" class="order-amount">₱0.00</p>
+      <p>Your order number is <strong id="order-numbers"></strong></p>
       <p class="delivery-info">Please make this amount ready on delivery day.</p>
     </div>
-    <div class="delivery-details">
+    <div class="delivery-details" id="delivery-details">
       <h2>Your Delivery Dates</h2>
-      <div class="delivery-item">
-        <p>Est.02 Apr - 11 Apr</p>
-        <img src="https://via.placeholder.com/60" alt="Product 1">
-      </div>
-      <div class="delivery-item">
-        <p>Est.02 Apr - 07 Apr</p>
-        <img src="https://via.placeholder.com/60" alt="Product 2">
-      </div>
+      <!-- Delivery items will be rendered here -->
       <p class="tracking-notice">
         Turn on your App Notification and track your delivery status in <strong>My Account &gt; My Order</strong>
       </p>
@@ -31,9 +24,10 @@
     </div>
     <div class="order-summary">
       <h2>Order Summary</h2>
-      <p class="final-total">₱542.79</p>
+      <p class="final-total">₱0.00</p>
       <button class="shop-more-btn">Shop More</button>
     </div>
   </div>
+  <script src="../scripts/orderSuccess.js"></script>
 </body>
 </html>

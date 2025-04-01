@@ -22,6 +22,9 @@ import deleteCartRoute from '../routers/deleteCartRoute.js'
 import selectedFetchControllerRoute from '../routers/fetchSelectedCartRoute.js'
 import getUserInfoRoute from '../routers/getUserInfoRoute.js'
 import updateCartQuantityRoute from '../routers/updateCartQuantity.js'
+import updateOrderStatusRoute from '../routers/updateOrderStatusRoute.js';
+import fetchSelectedOrderController from '../routers/fetchSelectedOrders.js'
+import updateProductQuantityRoute from '../routers/updateProductQuantityRouter.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -43,6 +46,10 @@ const initializeRoutes = (app)=> {
     app.use('/fetch-selected-cart', selectedFetchControllerRoute)
     app.use('/get-user-info', getUserInfoRoute)
     app.use('/update-cart-quantity', updateCartQuantityRoute)
+    app.use('/update-order-status', updateOrderStatusRoute)
+    app.use('/update-product-quantity', updateProductQuantityRoute)
+    app.use('/fetch-selected-orders', fetchSelectedOrderController)
+    
 
    
     app.use('/uploads', express.static(path.join(__dirname, '../utils/uploads')));

@@ -1,64 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PetsLike Cart</title>
-  <link rel="stylesheet" href="../css/cart.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-</head>
-<body>
-  <nav>
-    <a href="./home.html" class="logo">
-      <img src="../assets/images/petslike-logo.png" alt="PetsLike Logo">
-    </a>
-    <div class="search-bar">
-      <input type="text" placeholder="Search">
-      <button type="submit" class="search-btn">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
-    </div>
-    <div class="nav-links">
-      <a href="./account.html" class="nav-link">Account</a>
-      <a href="./cart.html" class="nav-link">Cart</a>
-      <a href="./orders.html" class="nav-link">Orders</a>
-    </div>
-  </nav>
-  <div class="cart-container">
-    <table class="cart-table">
-      <thead>
-        <tr>
-          <th class="checkbox-col">
-            <input type="checkbox" id="select-all">
-            <label for="select-all">Select All</label>
-          </th>
-          <th>Product</th>
-          <th>Unit Price</th>
-          <th>Quantity</th>
-          <th>Total Price</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody id="cart-table-body"></tbody>
-    </table>
-    <div class="cart-footer">
-      <div class="cart-footer-left">
-        <button class="delete-all-btn">Delete All</button>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetsLike Cart</title>
+    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="./home.html" class="logo">
+        <img src="../assets/images/petslike-logo.png" alt="PetsLike Logo">
+      </a>
+      <div class="search-bar">
+        <input type="text" placeholder="Search">
+        <button type="submit" class="search-btn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
       </div>
-      <div class="checkout-info">
-        <span class="total-items">Total (0 items): ₱0</span>
-        <button class="checkout-btn">Check Out</button>
+      <div class="nav-links">
+        <a href="./account.html" class="nav-link">Account</a>
+        <a href="./cart.html" class="nav-link">Cart</a>
+        <a href="./orders.html" class="nav-link">Orders</a>
+      </div>
+    </nav>
+    <div class="cart-container">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th class="checkbox-col">
+              <input type="checkbox" id="select-all">
+              <label for="select-all">Select All</label>
+            </th>
+            <th>Product</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="cart-table-body"></tbody>
+      </table>
+      <div class="cart-footer">
+        <div class="cart-footer-left">
+          <button class="delete-all-btn">Delete All</button>
+        </div>
+        <div class="checkout-info">
+          <span class="total-items">Total (0 items): ₱0</span>
+          <button class="checkout-btn">Check Out</button>
+        </div>
       </div>
     </div>
-  </div>
-  <footer>
-    <div class="footer-links">
-      <a href="#">Condition of Use</a>
-      <a href="#">Privacy Notice</a>
-      <a href="#">Help</a>
-    </div>
-    <p>© 2025</p>
-  </footer>
-  <script src="../scripts/cart.js" defer></script>
-</body>
-</html>
+    <footer>
+      <div class="footer-links">
+        <a href="#">Condition of Use</a>
+        <a href="#">Privacy Notice</a>
+        <a href="#">Help</a>
+      </div>
+      <p>© 2025</p>
+    </footer>
+    <script src="../scripts/cart.js" defer></script>
+  </body>
+  </html>

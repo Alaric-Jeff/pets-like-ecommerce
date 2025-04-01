@@ -11,7 +11,7 @@ const fetchCartController = async (req, res) => {
     }
     try {
         const userCart = await CartModel.findAll({
-            where: { userid },
+            where: { userid, isOrdered: false },
             include: [{
                 model: ProductModel,
                 include: [{

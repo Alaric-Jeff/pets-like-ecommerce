@@ -42,9 +42,17 @@ const CartModel = Cart.init({
         allowNull: false
     },
     totalPrice: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DOUBLE,
         allowNull: false,
         defaultValue: 0
+    },
+    status:{
+        type: DataTypes.STRING,
+        defaultValue: "To Review"
+    },
+    isOrdered: {
+        type: DataTypes.BOOLEAN, 
+        defaultValue: false
     }
 }, {
     sequelize: db,

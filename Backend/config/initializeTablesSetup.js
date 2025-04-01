@@ -15,7 +15,7 @@ const initializeTableSetup = async () => {
         await UserModel.sync({ alter: false });
         logger.info("[1]. Users' table initialized");
         
-        await ProductModel.sync({ alter: true });
+        await ProductModel.sync({ alter: false });
         logger.info("[2] Products' table initialized");
         
         await OrderModel.sync({ alter: false });
@@ -24,7 +24,7 @@ const initializeTableSetup = async () => {
         await UserProfileModel.sync({ alter: false });
         logger.info("[4] Users' profile table initialized");
         
-        await ProductImageModel.sync({ alter: true });
+        await ProductImageModel.sync({ alter: false });
         logger.info("[5] Products' images table initialized");
         
         await ProductReviewModel.sync({ alter: false });

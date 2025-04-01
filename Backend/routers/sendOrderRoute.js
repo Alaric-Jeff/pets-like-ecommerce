@@ -5,6 +5,6 @@ import express from 'express'
 
 const router = express.Router()
 
-router.post('/', sendOrderController)
+router.post('/', authenticateToken, sendOrderController)
 
 export default router;

@@ -12,6 +12,11 @@ import ReviewLikeModel from "../models/ReviewLikeModel.js";
 
 const AssociationConfig = () => {
 
+
+  // Order belongs to a Cart
+ OrderModel.belongsTo(CartModel, { foreignKey: "cartId", onDelete: "CASCADE" });
+ CartModel.hasMany(OrderModel, { foreignKey: "cartId", onDelete: "CASCADE" });
+
   // User and Profile associations
   UserModel.hasOne(UserProfileModel, { foreignKey: "userid", onDelete: "CASCADE" });
   UserProfileModel.belongsTo(UserModel, { foreignKey: "userid" });
@@ -22,6 +27,9 @@ const AssociationConfig = () => {
   
   ProductModel.hasMany(CartModel, { foreignKey: "productId", onDelete: "CASCADE" });
   CartModel.belongsTo(ProductModel, { foreignKey: "productId" });
+
+  ProductModel.hasMany(OrderModel, { foreignKey: "productId", onDelete: "CASCADE" });
+  OrderModel.belongsTo(ProductModel, { foreignKey: "productId" });
 
   // Product and Image associations
   ProductModel.hasOne(ProductImageModel, { foreignKey: "productId", onDelete: "CASCADE" });
@@ -45,6 +53,7 @@ const AssociationConfig = () => {
 
   UserModel.hasOne(ProfileImageModel, { foreignKey: "userid", onDelete: "CASCADE", as: "ProfileImage" });
   ProfileImageModel.belongsTo(UserModel, { foreignKey: "userid", as: "ProfileImage" });
+
 
   OrderModel.belongsToMany(ProductModel, {
     through: OrderItemModel,

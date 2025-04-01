@@ -1,6 +1,8 @@
 import { DataTypes, Model } from "sequelize";
 import { db } from "../config/database.js";
+import ProductModel from "./ProductModel.js";
 import UserModel from "./UserModel.js";
+import CartModel from '../models/CartModel.js'
 
 class Order extends Model {}
 
@@ -22,11 +24,18 @@ const OrderModel = Order.init(
       onUpdate: "CASCADE",
       onDelete: "CASCADE" 
     },
+    productId:{
+      type: DataTypes.INTEGER,
+      references:{
+        model: ProductModel,
+        key: "productId"
+      }
+    },
     productName: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    orderQuantity: {
+    quantity: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -34,13 +43,21 @@ const OrderModel = Order.init(
       type: DataTypes.DOUBLE,
       allowNull: false
     },
-    totalSum: {
+    cartId:{
+      type: DataTypes.INTEGER,
+      references: {
+        model: CartModel,
+        key: "cartId"
+      }
+    },
+    totalPrice: {
       type: DataTypes.DOUBLE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 0
     },
     orderStatus: {
       type: DataTypes.STRING,
-      defaultValue: "Pending"
+      defaultValue: "To Review"
     }
   },
   {

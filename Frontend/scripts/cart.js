@@ -104,17 +104,29 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".delete-btn").forEach(button => {
       button.addEventListener("click", () => deleteCartItem(button.dataset.id))
     })
+ 
     document.querySelector(".checkout-btn").addEventListener("click", () => {
-      const selectedCartIds = Array.from(document.querySelectorAll(".cart-checkbox"))
+      const selectedCartItems = Array.from(document.querySelectorAll(".cart-checkbox"))
         .filter(cb => cb.checked)
-        .map(cb => cb.dataset.id)
-      if (selectedCartIds.length === 0) {
+        .map(cb => {
+          const row = cb.closest("tr");
+          return {
+            cartId: cb.dataset.id,
+            productId: row.querySelector(".increase-btn").dataset.productId,
+            productName: row.querySelector(".product-title").textContent,
+            productPrice: parseFloat(cb.dataset.price),
+            quantity: parseInt(row.querySelector(".quantity-input").value)
+          }
+        })
+    
+      if (selectedCartItems.length === 0) {
         alert("Please select at least one cart item to checkout")
         return
       }
-      localStorage.setItem("selectedCartIds", JSON.stringify(selectedCartIds))
+      localStorage.setItem("selectedCartItems", JSON.stringify(selectedCartItems))
       window.location.href = "../pages/checkout.html"
     })
+    
   }
   
   function updateSelectAllStatus() {
