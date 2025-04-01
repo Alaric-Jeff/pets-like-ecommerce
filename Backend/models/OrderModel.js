@@ -45,10 +45,6 @@ const OrderModel = Order.init(
     },
     cartId:{
       type: DataTypes.INTEGER,
-      references: {
-        model: CartModel,
-        key: "cartId"
-      }
     },
     totalPrice: {
       type: DataTypes.DOUBLE,

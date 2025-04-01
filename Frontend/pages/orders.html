@@ -35,31 +35,15 @@
                     <th>Quantity</th>
                     <th>Total Price</th>
                     <th>Status</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="product-info">
-                        <img src="../assets/images/dog-treats4.jpg" alt="Product">
-                        <span>Grain-Free Goodies</span>
-                    </td>
-                    <td>599.00</td>
-                    <td>1</td>
-                    <td>599.00</td>
-                    <td><span class="status completed">Completed</span></td>
-                </tr>
-                <tr>
-                    <td class="product-info">
-                        <img src="../assets/images/dog-treats4.jpg" alt="Product">
-                        <span>Organic Dog Biscuits</span>
-                    </td>
-                    <td>450.00</td>
-                    <td>2</td>
-                    <td>900.00</td>
-                    <td><span class="status pending">Pending</span></td>
-                </tr>
+                <!-- Dynamic content will be rendered here -->
             </tbody>
         </table>
+        <p class="no-orders-message" style="display: none;">No orders</p>
     </div>
 
     <footer>
@@ -70,5 +54,7 @@
         </div>
         <p>© 2025</p>
     </footer>
+
+    <script src="../scripts/orders.js"></script>
 </body>
 </html>

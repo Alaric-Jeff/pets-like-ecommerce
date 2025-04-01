@@ -12,11 +12,6 @@ import ReviewLikeModel from "../models/ReviewLikeModel.js";
 
 const AssociationConfig = () => {
 
-
-  // Order belongs to a Cart
- OrderModel.belongsTo(CartModel, { foreignKey: "cartId", onDelete: "CASCADE" });
- CartModel.hasMany(OrderModel, { foreignKey: "cartId", onDelete: "CASCADE" });
-
   // User and Profile associations
   UserModel.hasOne(UserProfileModel, { foreignKey: "userid", onDelete: "CASCADE" });
   UserProfileModel.belongsTo(UserModel, { foreignKey: "userid" });

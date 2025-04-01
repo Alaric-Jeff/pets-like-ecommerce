@@ -1,7 +1,7 @@
-import updateCartModelQuantity from "../controllers/cartUpdateQuantity.js";
+
 import authenticateToken from "../middleware/authenticate.js";
 import express from 'express'
-import updateProductQuantityController from "../models/updateProductQuantity.js";
+import updateProductQuantityController from "../controllers/updateProductQuantity.js";
 
 const router = express.Router()
 

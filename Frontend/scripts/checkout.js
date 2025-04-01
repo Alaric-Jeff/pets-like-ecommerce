@@ -1,11 +1,11 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
   const token = localStorage.getItem("token");
   const selectedCartItems = JSON.parse(localStorage.getItem("selectedCartItems") || "[]");
   if (!token || selectedCartItems.length === 0) {
     window.location.href = "../pages/cart.html";
     return;
   }
-  
+
   const selectedCartIds = selectedCartItems.map(item => item.cartId);
 
   fetch("http://localhost:3000/get-user-info", {
@@ -14,16 +14,16 @@ document.addEventListener("DOMContentLoaded", function(){
       "Authorization": `Bearer ${token}`
     }
   })
-  .then(response => response.json())
-  .then(data => {
-    const user = data.userInfo;
-    document.getElementById("user-fullname").textContent = (user.firstname + " " + user.surname) || "No name available";
-    document.getElementById("user-address").textContent = (user.UserProfile && user.UserProfile.address) || "No address available";
-    document.getElementById("user-contact").textContent = (user.UserProfile && user.UserProfile.mobileNumber) || "No contact available";
-  })
-  .catch(error => {
-    console.error("Error fetching user info:", error);
-  });
+    .then(response => response.json())
+    .then(data => {
+      const user = data.userInfo;
+      document.getElementById("user-fullname").textContent = (user.firstname + " " + user.surname) || "No name available";
+      document.getElementById("user-address").textContent = (user.UserProfile && user.UserProfile.address) || "No address available";
+      document.getElementById("user-contact").textContent = (user.UserProfile && user.UserProfile.mobileNumber) || "No contact available";
+    })
+    .catch(error => {
+      console.error("Error fetching user info:", error);
+    });
 
   fetch("http://localhost:3000/fetch-selected-cart", {
     method: "POST",
@@ -33,14 +33,14 @@ document.addEventListener("DOMContentLoaded", function(){
     },
     body: JSON.stringify({ cartId: selectedCartIds })
   })
-  .then(response => response.json())
-  .then(data => {
-    renderCartItems(data.cart);
-    updateOrderSummary(data.cart);
-  })
-  .catch(error => {
-    console.error("Error fetching selected cart:", error);
-  });
+    .then(response => response.json())
+    .then(data => {
+      renderCartItems(data.cart);
+      updateOrderSummary(data.cart);
+    })
+    .catch(error => {
+      console.error("Error fetching selected cart:", error);
+    });
 
   function renderCartItems(cartItems) {
     const container = document.getElementById("selected-cart-items");
@@ -75,12 +75,6 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
   document.getElementById("place-order-btn").addEventListener("click", () => {
-    const selectedCartItems = JSON.parse(localStorage.getItem("selectedCartItems") || "[]");
-    if (selectedCartItems.length === 0) {
-      alert("No selected items to order!");
-      return;
-    }
-  
     fetch("http://localhost:3000/send-order-route", {
       method: "POST",
       headers: {
@@ -89,12 +83,16 @@ document.addEventListener("DOMContentLoaded", function(){
       },
       body: JSON.stringify({ orderItems: selectedCartItems })
     })
-    .then(response => response.json())
-    .then(data => {
-      window.location.href = "../pages/orderSuccess.html";
-    })
-    .catch(error => {
-      console.error("Error updating order status:", error);
-    });
+      .then(response => {
+        console.log("Response from send-order-route:", response);
+        return response.json();
+      })
+      .then(data => {
+        console.log("Order placed successfully:", data);
+        window.location.href = "../pages/orderSuccess.html";
+      })
+      .catch(error => {
+        console.error("Error processing the order:", error);
+      });
   });
 });

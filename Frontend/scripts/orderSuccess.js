@@ -1,6 +1,7 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const token = localStorage.getItem("token");
   const selectedCartItems = JSON.parse(localStorage.getItem("selectedCartItems") || "[]");
+  const selectedCartIds = selectedCartItems.map(item => item.cartId);
 
   if (!token || selectedCartItems.length === 0) {
     window.location.href = "../pages/cart.html";
@@ -15,37 +16,65 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     body: JSON.stringify({ selectedCartItems })
   })
-  .then(response => response.json())
-  .then(data => {
-    if (data.orders && data.orders.length > 0) {
-      updateProductQuantities(data.orders);
-      renderOrderSuccess(data.orders);
-    } else {
-      document.querySelector(".order-success-container").innerHTML = "<p>No orders found.</p>";
-    }
-  })
-  .catch(error => {
-    console.error("Error fetching orders:", error);
-  });
+    .then(response => response.json())
+    .then(data => {
+      if (data.orders && data.orders.length > 0) {
+        updateProductQuantities(selectedCartItems)
+          .then(() => deleteCartItems(selectedCartIds))
+          .then(() => renderOrderSuccess(data.orders))
+          .catch(error => console.error("Error during order processing:", error));
+      } else {
+        document.querySelector(".order-success-container").innerHTML = "<p>No orders found.</p>";
+      }
+    })
+    .catch(error => {
+      console.error("Error fetching orders:", error);
+    });
 
-  function updateProductQuantities(orders) {
-    orders.forEach(order => {
-      fetch("http://localhost:3000/update-product-quantity", {
+  function updateProductQuantities(cartItems) {
+    const updatePromises = cartItems.map(item => {
+      return fetch("http://localhost:3000/update-product-quantity", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
-          productId: order.productId,
-          quantity: order.quantity,
+          productId: item.productId,
+          quantity: item.quantity,
           operation: "subtract"
         })
       })
-      .then(response => response.json())
-      .then(data => console.log("Product quantity updated:", data))
-      .catch(error => console.error("Error updating product quantity:", error));
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Failed to update product quantity for productId: ${item.productId}`);
+          }
+          return response.json();
+        })
+        .then(data => console.log("Product quantity updated:", data))
+        .catch(error => console.error("Error updating product quantity:", error));
     });
+
+    return Promise.all(updatePromises);
+  }
+
+  function deleteCartItems(cartIds) {
+    return fetch("http://localhost:3000/delete-cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ cartId: cartIds })
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to delete cart items");
+        }
+        return response.json();
+      })
+      .then(data => console.log("Cart items deleted successfully:", data))
+      .catch(error => console.error("Error deleting cart items:", error));
   }
 
   function renderOrderSuccess(orders) {

@@ -5,6 +5,8 @@ import logger from '../utils/logger.js';
 
 const fetchOrdersController = async (req, res) => {
     try {
+        console.log(`this is being called`)
+
         const orders = await OrderModel.findAll({
             include: [
                 {
@@ -12,7 +14,7 @@ const fetchOrdersController = async (req, res) => {
                     include: [
                         {
                             model: ProductImageModel,
-                            attributes: ['imageUrl'] 
+                            attributes: ['image'] 
                         }
                     ]
                 }
@@ -23,7 +25,8 @@ const fetchOrdersController = async (req, res) => {
             return res.status(404).json({ message: "No orders found." });
         }
 
-        logger.info(`Successfully fetched ${orders.length} orders`);
+        logger.info(`Successfully fetched ${orders.length} ordersm in fetchOrdersController`);
+        console.log(orders)
         return res.status(200).json({
             message: "Successfully fetched all orders.",
             orders
